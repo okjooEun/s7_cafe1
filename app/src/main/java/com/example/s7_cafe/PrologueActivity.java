@@ -119,6 +119,7 @@ public class PrologueActivity extends AppCompatActivity {
 
                                                                              Intent intent = new Intent(PrologueActivity.this, ContinueActivity.class);
                                                                              startActivity(intent);
+
                                                                             }
                                                                         });
                                                                     }
@@ -137,6 +138,10 @@ public class PrologueActivity extends AppCompatActivity {
                 });
 
             }
+    public void onBackPressed(){
+        Intent intent = new Intent(PrologueActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 
 }
 

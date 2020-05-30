@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-public class ContinueActivity extends AppCompatActivity {
-    private View    decorView;
+public class EndGameActivity extends AppCompatActivity {
+    private View decorView;
     private int   uiOption;
 
     TextView txt;
@@ -25,7 +25,7 @@ public class ContinueActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_continue);
+        setContentView(R.layout.activity_back);
         //소프트키(네비게이션바) 없애기 시작
         decorView = getWindow().getDecorView();
 
@@ -52,18 +52,15 @@ public class ContinueActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContinueActivity.this, TutoActivity.class);
-                startActivity(intent);
-                finish();
-
+                finishAffinity();
+                System.runFinalization();
+                System.exit(0);
             }
         });
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (ContinueActivity.this, DayActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

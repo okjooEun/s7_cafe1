@@ -54,10 +54,10 @@ public class TimeOverEndingActivity extends AppCompatActivity {
         lin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(count == 2) {
+                if(count == 3) {
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
-                } else if (count ==4){
+                } else if (count ==5){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                 }else if (count ==7){
@@ -74,6 +74,9 @@ public class TimeOverEndingActivity extends AppCompatActivity {
 
     }
 
-
+    public void onBackPressed(){
+        Intent intent = new Intent(TimeOverEndingActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 
 }

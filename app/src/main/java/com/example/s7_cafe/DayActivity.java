@@ -81,6 +81,7 @@ public class DayActivity extends AppCompatActivity {
 
         switch (cuscount){
             case 1:
+            case 2:
                 textView3.setText("2일차");
                 cus1 = new ArrayList<>();
                 cus1.add("저기요. 아이스 아메리카노 1잔 주세요.");
@@ -122,6 +123,7 @@ public class DayActivity extends AppCompatActivity {
 //                break;
 
             case 3:
+                case 4:
                 textView3.setText("3일차");
                 cus2 = new ArrayList<>();
                 cus2.add("크리스마스 한정 초코요? 따뜻한거로 주세요!");
@@ -141,6 +143,8 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
             case 5:
+            case 6:
+
                 textView3.setText("10일차");
                 cus3 = new ArrayList<>();
                 cus3.add("초코바나나주스 맛있겠다! 그거로 주세요.");
@@ -165,5 +169,9 @@ public class DayActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+    public void onBackPressed(){
+        Intent intent = new Intent(DayActivity.this,EndGameActivity.class);
+        startActivity(intent);
     }
 }

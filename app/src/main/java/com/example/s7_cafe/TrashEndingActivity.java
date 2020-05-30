@@ -73,11 +73,11 @@ public class TrashEndingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (count == 2) {
+                if (count == 3) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 4) {
+                } else if (count == 5) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
@@ -94,5 +94,9 @@ public class TrashEndingActivity extends AppCompatActivity {
 
         });
 
+    }
+    public void onBackPressed(){
+        Intent intent = new Intent(TrashEndingActivity.this,EndGameActivity.class);
+        startActivity(intent);
     }
 }

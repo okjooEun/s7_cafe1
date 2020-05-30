@@ -57,4 +57,8 @@ public class Ending2Activity extends AppCompatActivity {
             }
         });
     }
+    public void onBackPressed(){
+        Intent intent = new Intent(Ending2Activity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }

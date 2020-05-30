@@ -64,5 +64,8 @@ public class WrongEndingActivity extends AppCompatActivity {
     }
 
 
-
+    public void onBackPressed(){
+        Intent intent = new Intent(WrongEndingActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }

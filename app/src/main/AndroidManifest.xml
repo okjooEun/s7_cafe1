@@ -116,6 +116,9 @@
         <activity android:name=".TrashEndingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.MyDialog"/>
+        <activity android:name=".EndGameActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog"/>
     </application>
 
 </manifest>

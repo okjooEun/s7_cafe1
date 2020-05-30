@@ -127,179 +127,173 @@ public class MakeSuccessActivity extends AppCompatActivity {
         } else if (a == 18) {
             Glide.with(this).load(R.raw.ms_ntl).into(success);
         }
-
-
-        success.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
+            public void run() {
+                if (userCount == 0) {
+                    db2.execSQL(SQL_DELETE_TABLE);
+                    db2.execSQL(SQL_CREATE_USER_TABLE);
+
+                    if(count == 3) {
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==5){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else if (count ==7){
+                        Intent intent = new Intent(MakeSuccessActivity.this, WhichEndingActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        Intent intent = new Intent(MakeSuccessActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } else {
+                    finish();
+                }
+            }
+        }, 1100);
+
+
                 name = sharedPreference.getString(MakeSuccessActivity.this, "name");
-                SharedPreferenceUtill.setBoolean(MakeSuccessActivity.this,"savename",true);
+                SharedPreferenceUtill.setBoolean(MakeSuccessActivity.this, "savename", true);
                 switch (name) {
                     case "0":
-                        cuslist.set(0,"빈칸");
+                        cuslist.set(0, "빈칸");
                         break;
                     case "1":
-                        cuslist.set(1,"빈칸");
+                        cuslist.set(1, "빈칸");
                         break;
                     case "2":
-                        cuslist.set(2,"빈칸");
+                        cuslist.set(2, "빈칸");
                         break;
                     case "3":
-                        cuslist.set(3,"빈칸");
+                        cuslist.set(3, "빈칸");
                         break;
                     case "4":
-                        cuslist.set(4,"빈칸");
+                        cuslist.set(4, "빈칸");
                         break;
                     case "5":
-                        cuslist.set(5,"빈칸");
+                        cuslist.set(5, "빈칸");
                         break;
                     case "6":
-                        cuslist.set(6,"빈칸");
+                        cuslist.set(6, "빈칸");
                         break;
                     case "7":
-                        cuslist.set(7,"빈칸");
+                        cuslist.set(7, "빈칸");
                         break;
                     case "8":
-                        cuslist.set(8,"빈칸");
+                        cuslist.set(8, "빈칸");
                         break;
                     case "9":
-                        cuslist.set(9,"빈칸");
+                        cuslist.set(9, "빈칸");
                         break;
                     case "10":
-                        cuslist.set(10,"빈칸");
+                        cuslist.set(10, "빈칸");
                         break;
                     case "11":
-                        cuslist.set(11,"빈칸");
+                        cuslist.set(11, "빈칸");
                         break;
                     case "12":
-                        cuslist.set(12,"빈칸");
+                        cuslist.set(12, "빈칸");
                         break;
                     case "13":
-                        cuslist.set(13,"빈칸");
+                        cuslist.set(13, "빈칸");
                         break;
                     case "14":
-                        cuslist.set(14,"빈칸");
+                        cuslist.set(14, "빈칸");
                         break;
                     case "15":
-                        cuslist2.set(0,"빈칸");
+                        cuslist2.set(0, "빈칸");
                         break;
                     case "16":
-                        cuslist2.set(1,"빈칸");
+                        cuslist2.set(1, "빈칸");
                         break;
                     case "17":
-                        cuslist2.set(2,"빈칸");
+                        cuslist2.set(2, "빈칸");
                         break;
                     case "18":
-                        cuslist2.set(3,"빈칸");
+                        cuslist2.set(3, "빈칸");
                         break;
                     case "19":
-                        cuslist2.set(4,"빈칸");
+                        cuslist2.set(4, "빈칸");
                         break;
                     case "20":
-                        cuslist3.set(0,"빈칸");
+                        cuslist3.set(0, "빈칸");
                         break;
                     case "21":
-                        cuslist3.set(1,"빈칸");
+                        cuslist3.set(1, "빈칸");
                         break;
                     case "22":
-                        cuslist3.set(2,"빈칸");
+                        cuslist3.set(2, "빈칸");
                         break;
                     case "23":
-                        cuslist3.set(3,"빈칸");
+                        cuslist3.set(3, "빈칸");
                         break;
                     case "24":
-                        cuslist3.set(4,"빈칸");
+                        cuslist3.set(4, "빈칸");
                         break;
                     case "25":
-                        cuslist3.set(5,"빈칸");
+                        cuslist3.set(5, "빈칸");
                         break;
 
-                        case "26":
-                        cuslist3.set(6,"빈칸");
+                    case "26":
+                        cuslist3.set(6, "빈칸");
                         break;
                     case "27":
-                        cuslist3.set(7,"빈칸");
+                        cuslist3.set(7, "빈칸");
                         break;
                     case "28":
-                        cuslist3.set(8,"빈칸");
+                        cuslist3.set(8, "빈칸");
                         break;
                     case "29":
-                        cuslist3.set(9,"빈칸");
+                        cuslist3.set(9, "빈칸");
                         break;
                     case "b0":
-                        cuslist4.set(0,"빈칸");
+                        cuslist4.set(0, "빈칸");
                         break;
                     case "b1":
-                        cuslist4.set(1,"빈칸");
+                        cuslist4.set(1, "빈칸");
                         break;
                     case "b2":
-                        cuslist4.set(2,"빈칸");
+                        cuslist4.set(2, "빈칸");
                         break;
                     case "b3":
-                        cuslist4.set(3,"빈칸");
+                        cuslist4.set(3, "빈칸");
                         break;
                     case "b4":
-                        cuslist4.set(4,"빈칸");
+                        cuslist4.set(4, "빈칸");
                         break;
                     case "b5":
-                        cuslist4.set(5,"빈칸");
+                        cuslist4.set(5, "빈칸");
                         break;
                     case "b6":
-                        cuslist4.set(6,"빈칸");
+                        cuslist4.set(6, "빈칸");
                         break;
                     case "b7":
-                        cuslist4.set(7,"빈칸");
+                        cuslist4.set(7, "빈칸");
                         break;
                     case "b8":
-                        cuslist4.set(8,"빈칸");
+                        cuslist4.set(8, "빈칸");
                         break;
                     case "b9":
-                        cuslist4.set(9,"빈칸");
+                        cuslist4.set(9, "빈칸");
                         break;
                     case "b10":
-                        cuslist4.set(10,"빈칸");
+                        cuslist4.set(10, "빈칸");
                         break;
                     case "b11":
-                        cuslist4.set(11,"빈칸");
+                        cuslist4.set(11, "빈칸");
                         break;
 
 
                 }
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (userCount == 0) {
-                            db2.execSQL(SQL_DELETE_TABLE);
-                            db2.execSQL(SQL_CREATE_USER_TABLE);
-
-                            if(count == 2) {
-                                Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else if (count ==4){
-                                Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }else if (count ==7){
-                                Intent intent = new Intent(MakeSuccessActivity.this, WhichEndingActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Intent intent = new Intent(MakeSuccessActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        } else {
-                            finish();
-                        }
-                    }
-                }, 1100);
             }
-        });
 
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

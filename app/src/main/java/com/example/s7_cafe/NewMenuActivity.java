@@ -142,4 +142,8 @@ public class NewMenuActivity extends AppCompatActivity {
             }
         });
     }
+    public void onBackPressed(){
+        Intent intent = new Intent(NewMenuActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }

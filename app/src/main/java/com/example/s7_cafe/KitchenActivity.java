@@ -1914,7 +1914,10 @@ public class KitchenActivity extends AppCompatActivity {
         }
 
     }
-
+    public void onBackPressed(){
+        Intent intent = new Intent(KitchenActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }
 
 

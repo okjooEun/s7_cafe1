@@ -180,5 +180,8 @@ public class TutoActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void onBackPressed(){
+        Intent intent = new Intent(TutoActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }

@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         if (touchonoff == false) {
 
             pool = new SoundPool(0, AudioManager.STREAM_MUSIC, 0);
-            bip = pool.load(this, R.id.wrong, 1);
+            bip = pool.load(this, R.raw.wrong, 1);
         }
 
         SharedPreferenceUtill.setInt(MainActivity.this, "count", count + 1);
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         case 2:
             datetext.setText("24");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(1);
             switch (j) {
                 case 0:
                     rand_24day();
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText("25");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
                     rand_24day();
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText(" 1");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
+            j = rand.nextInt(2);
 
             switch (j) {
                 case 0:
@@ -810,7 +810,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n카페라떼");
                 insertExtra(4);
-                intent.putExtra("bill2","아이스\n카페라떼");
+                intent.putExtra("bil2","아이스\n카페라떼");
                 insertExtra(3);
                 sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
                 startActivity(intent);
@@ -894,7 +894,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "한정 핫\n초코라떼");
                 insertExtra(10);
-                intent.putExtra("bill2","핫\n바닐라라떼");
+                intent.putExtra("bil2","핫\n바닐라라떼");
                 insertExtra(6);
                 sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
@@ -2490,7 +2490,7 @@ public class MainActivity extends AppCompatActivity {
 
         //진상손님 랜덤
     public void rand_bc(){
-        i = rand.nextInt(12);
+        i = rand.nextInt(10);
         while ((cuslist4.get(i)).equals("빈칸")) {
             i--;
             if (i == -1) {
@@ -2627,7 +2627,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+    public void onBackPressed(){
+        Intent intent = new Intent(MainActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }
 
 

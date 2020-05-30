@@ -232,5 +232,8 @@ public class StartActivity extends AppCompatActivity {
         }
     }
 
-
+    public void onBackPressed(){
+        Intent intent = new Intent(StartActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 }

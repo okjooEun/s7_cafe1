@@ -201,6 +201,9 @@ public class WhichEndingActivity extends AppCompatActivity {
 
     }
 
-
+    public void onBackPressed(){
+        Intent intent = new Intent(WhichEndingActivity.this,EndGameActivity.class);
+        startActivity(intent);
+    }
 
 }
