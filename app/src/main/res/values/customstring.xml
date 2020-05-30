@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="CUSTOM">
+        <item> 저기요, 아이스 아메리카노 1잔 주세요.</item>
+        <item>안녕하세요! 딸기스무디 하나 초코라떼 하나 주문할게요. \n\n                아, 초코라떼는 핫초코라떼로 부탁드려요.</item>
+        <item>뜨거운 카페라떼 1잔 주실래요?</item>
+        <item>뭐 먹지....음..... 초코스무디 1잔 주세요!</item>
+        <item>아메리카노 2잔 주문할게요. \n\n              따뜻한거 차가운거 하나씩 해주세요.</item>
+        <item>저기 뜨거운 카페라떼 1잔 주실래요?</item>
+        <item>음,  따뜻한걸로 바닐라라떼로 1잔 주실래요?</item>
+    </string-array>
+</resources>

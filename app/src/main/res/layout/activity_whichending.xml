@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WhichEndingActivity"
+    android:id="@+id/end"
+    android:background="@drawable/countback">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/calenderview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/jcalendar" />
+
+            <TextView
+                android:id="@+id/datetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="33dp"
+                android:fontFamily="@font/pfstardust"
+                android:text="2"
+                android:textColor="@android:color/black"
+                android:textSize="32dp"
+                android:textStyle="bold" />
+
+            <ImageView
+            android:id="@+id/setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="600dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/setting" />
+        </FrameLayout>
+
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="640dp"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/guest"
+                android:layout_width="match_parent"
+                android:layout_height="168dp" />
+
+            <LinearLayout
+                android:id="@+id/linBtn"
+                android:layout_width="600dp"
+                android:layout_height="299dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/btnSelect1"
+                    android:layout_width="450dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button"
+                    android:fontFamily="@font/sol"
+                    android:lineSpacingExtra="7dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="Button"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+
+                <Button
+                    android:id="@+id/btnSelect2"
+                    android:layout_width="450dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/button"
+                    android:fontFamily="@font/sol"
+                    android:layout_marginLeft="30dp"
+                    android:lineSpacingExtra="7dp"
+                    android:text="Button"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="438dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="138dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/speech">
+
+
+            <TextView
+                android:id="@+id/guestname"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/sol"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txtTalk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/sol"
+                android:textAlignment="center"
+                android:background="#00FFFFFF"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/txtTalk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/sol"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:background="#00FFFFFF"
+                android:textSize="16dp"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

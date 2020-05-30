@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.s7_cafe">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="S7 카페 알바"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <service
+            android:name=".TouchMusicService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".GameMusicService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".MusicService"
+            android:enabled="true"
+            android:exported="true" />
+        <service android:name=".ChristmasMusicService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".EndingMusic2Service"
+            android:exported="true"
+            android:enabled="true" />
+        <service
+            android:name=".EndingMusicService"
+            android:exported="true"
+            android:enabled="true" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DayActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".SettingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog" />
+        <activity
+            android:name=".SettingActivity2"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog" />
+        <activity
+            android:name=".NewMenuActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".PrologueActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TutoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".WrongEndingActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".WhichEndingActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Ending1Activity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Ending2Activity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Ending3Activity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".KitchenActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".RecipebookActivity"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".RecipebookActivity2"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".RecipebookActivity3"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape" />
+        <activity android:name=".TimeOverEndingActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".FinishActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".WrongKitchenActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog"/>
+        <activity android:name=".MakeSuccessActivity"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".HelpActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ContinueActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog"
+            />
+        <activity android:name=".NewActivity"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".TrashEndingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog"/>
+    </application>
+
+</manifest>
