@@ -15,10 +15,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SettingActivity2 extends AppCompatActivity {
-    Boolean onoff;
-    Boolean touchonoff;
+Boolean onoff,touchonoff;
+    int count;
+
+    SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +53,11 @@ public class SettingActivity2 extends AppCompatActivity {
         final Button offBack =findViewById(R.id.offBack);
         final Button onSound = findViewById(R.id.onSound);
         final Button offSound =findViewById(R.id.offSound);
-        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
-        onoff = sharedPreference.getBoolean(this,"sound");
+
+        count = sharedPreference.getInt(this, "count");
+        onoff = sharedPreference.getBoolean(SettingActivity2.this,"sound");
+        touchonoff = sharedPreference.getBoolean(SettingActivity2.this,"touch");
+
 
         if(onoff == true){
             Resources res1 = getResources();
@@ -65,7 +72,19 @@ public class SettingActivity2 extends AppCompatActivity {
             onBack.setBackground(drawable);
             offBack.setBackground(drawable1);
         }
-
+        if(touchonoff == true){
+            Resources res1 = getResources();
+            Drawable drawable = res1.getDrawable(R.drawable.on_light);
+            Drawable drawable1 = res1.getDrawable(R.drawable.off_dark);
+            onSound.setBackground(drawable);
+            offSound.setBackground(drawable1);
+        } else if (touchonoff == false){
+            Resources res1 = getResources();
+            Drawable drawable = res1.getDrawable(R.drawable.on_dark);
+            Drawable drawable1 = res1.getDrawable(R.drawable.off_light);
+            onSound.setBackground(drawable);
+            offSound.setBackground(drawable1);
+        }
         onBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +96,10 @@ public class SettingActivity2 extends AppCompatActivity {
 
                 SharedPreferenceUtill.setBoolean(SettingActivity2.this,"sound",true);
 
-                startService(new Intent(getApplicationContext(),GameMusicService.class));
+               stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
+
+
             }
         });
 
@@ -90,7 +112,10 @@ public class SettingActivity2 extends AppCompatActivity {
                 onBack.setBackground(drawable);
                 offBack.setBackground(drawable1);
                 SharedPreferenceUtill.setBoolean(SettingActivity2.this,"sound",false);
-                stopService(new Intent(getApplicationContext(),GameMusicService.class));
+
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
+
             }
         });
 
@@ -102,6 +127,8 @@ public class SettingActivity2 extends AppCompatActivity {
                 Drawable drawable1 = res1.getDrawable(R.drawable.off_dark);
                 onSound.setBackground(drawable);
                 offSound.setBackground(drawable1);
+
+                SharedPreferenceUtill.setBoolean(SettingActivity2.this,"touch",true);
             }
         });
 
@@ -113,6 +140,8 @@ public class SettingActivity2 extends AppCompatActivity {
                 Drawable drawable1 = res1.getDrawable(R.drawable.off_light);
                 onSound.setBackground(drawable);
                 offSound.setBackground(drawable1);
+
+                SharedPreferenceUtill.setBoolean(SettingActivity2.this,"touch",false);
             }
         });
 

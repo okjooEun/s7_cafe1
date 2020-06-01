@@ -14,13 +14,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class NewMenuActivity extends AppCompatActivity {
 
     LinearLayout rel;
     ImageView setting, menu, menu1,menu2,menu3;
     TextView textView4, textView5;
     int cuscount;
+    Boolean onoff;
 
+    SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +45,9 @@ public class NewMenuActivity extends AppCompatActivity {
 
         decorView.setSystemUiVisibility(uiOption);
         //소프트키(네비게이션바) 없애기 끝
-
-        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
         cuscount = sharedPreference.getInt(this,"count");
 
+        startService(new Intent(getApplicationContext(),TotalMusic.class));
         rel = (LinearLayout) findViewById(R.id.rel);
         setting =(ImageView) findViewById(R.id.setting);
         textView4 = (TextView) findViewById(R.id.textView4);
@@ -52,6 +56,17 @@ public class NewMenuActivity extends AppCompatActivity {
         menu1 = (ImageView) findViewById(R.id.menu1);
         menu2 =(ImageView) findViewById(R.id.menu2);
         menu3 =(ImageView) findViewById(R.id.menu3);
+        onoff = sharedPreference.getBoolean(NewMenuActivity.this,"sound");
+
+        //세팅값 1초마다 가져오기
+        TimerTask myTask = new TimerTask() {
+            @Override
+            public void run() {
+                onoff = sharedPreference.getBoolean(NewMenuActivity.this,"sound");
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(myTask, 1000,1000);
 
                 switch (cuscount){
 
@@ -67,7 +82,8 @@ public class NewMenuActivity extends AppCompatActivity {
 //                menu1.setImageDrawable(lim);
 //                menu2.setImageDrawable(cal);
 //                menu3.setImageDrawable(cali);
-
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
                 textView5.setText("초코스무디, 딸기스무디, 카페라떼가 레시피에 추가되었습니다!");
                 Resources gu1 = getResources();
@@ -79,8 +95,11 @@ public class NewMenuActivity extends AppCompatActivity {
                 menu1.setImageDrawable(ss);
                 menu2.setImageDrawable(bl);
                 menu3.setImageDrawable(bli);
+
                 break;
             case 3:
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
                 textView5.setText("크리스마스 한정 초콜릿라떼가 레시피에 추가되었습니다!");
                 Resources gu2 = getResources();
@@ -101,8 +120,10 @@ public class NewMenuActivity extends AppCompatActivity {
 //                menu3.setImageDrawable(bli);
                 break;
 
-
             case 5:
+                case 6:
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
                 textView5.setText("신년 토피넛라떼가 레시피에 추가되었습니다!");
                 Resources gu3 = getResources();
@@ -110,6 +131,7 @@ public class NewMenuActivity extends AppCompatActivity {
                 Drawable ms_ntli = gu3.getDrawable(R.drawable.ms_ntli);
                 menu1.setImageDrawable(ms_ntl);
                 menu2.setImageDrawable(ms_ntli);
+
                 break;
 
 //            case 6:

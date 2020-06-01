@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
+//게임 종료여부 다이얼로그
 public class EndGameActivity extends AppCompatActivity {
     private View decorView;
     private int   uiOption;
@@ -52,6 +53,13 @@ public class EndGameActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopService(new Intent(getApplicationContext(),GameMusicService.class));
+                stopService(new Intent(getApplicationContext(),EndingMusic2Service.class));
+                stopService(new Intent(getApplicationContext(),EndingMusicService.class));
+                stopService(new Intent(getApplicationContext(),MusicService.class));
+                stopService(new Intent(getApplicationContext(),ChristmasMusicService.class));
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+
                 finishAffinity();
                 System.runFinalization();
                 System.exit(0);

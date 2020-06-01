@@ -32,7 +32,7 @@ public class MakeSuccessActivity extends AppCompatActivity {
     final MenuDbhelper userDbhelper = new MenuDbhelper(this);
     RelativeLayout rel;
     ImageView success;
-    String name, blackarray[];
+    String name;
     ArrayList<String> cuslist, cuslist2, cuslist3,cuslist4;
     SharedPreferenceUtill sharedPreference;
 
@@ -68,8 +68,6 @@ public class MakeSuccessActivity extends AppCompatActivity {
         cuslist2 = sharedPreference.getStringArrayPref(this,"list2");
         cuslist3 = sharedPreference.getStringArrayPref(this,"list3");
         cuslist4 = sharedPreference.getStringArrayPref(this,"list4");
-
-        blackarray = getResources().getStringArray(R.array.BLACK);
 
         getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -140,6 +138,7 @@ public class MakeSuccessActivity extends AppCompatActivity {
                         finish();
                     } else if (count ==5){
                         Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
                         startActivity(intent);
                         finish();
                     }else if (count ==7){
@@ -159,8 +158,10 @@ public class MakeSuccessActivity extends AppCompatActivity {
         }, 1100);
 
 
-                name = sharedPreference.getString(MakeSuccessActivity.this, "name");
+
                 SharedPreferenceUtill.setBoolean(MakeSuccessActivity.this, "savename", true);
+                SharedPreferenceUtill.setBoolean(this,"next", true);
+        name = sharedPreference.getString(MakeSuccessActivity.this, "name");
                 switch (name) {
                     case "0":
                         cuslist.set(0, "빈칸");
@@ -240,7 +241,6 @@ public class MakeSuccessActivity extends AppCompatActivity {
                     case "25":
                         cuslist3.set(5, "빈칸");
                         break;
-
                     case "26":
                         cuslist3.set(6, "빈칸");
                         break;
@@ -286,12 +286,14 @@ public class MakeSuccessActivity extends AppCompatActivity {
                     case "b10":
                         cuslist4.set(10, "빈칸");
                         break;
-                    case "b11":
-                        cuslist4.set(11, "빈칸");
-                        break;
-
 
                 }
+                sharedPreference.setStringArrayPref(MakeSuccessActivity.this, "list",cuslist);
+                sharedPreference.setStringArrayPref(MakeSuccessActivity.this, "list2",cuslist2);
+                sharedPreference.setStringArrayPref(MakeSuccessActivity.this, "list3",cuslist3);
+                sharedPreference.setStringArrayPref(MakeSuccessActivity.this, "list4",cuslist4);
+
+
             }
 
 

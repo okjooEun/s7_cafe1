@@ -119,8 +119,6 @@ public class SettingActivity extends AppCompatActivity {
                 onSound.setBackground(drawable);
                 offSound.setBackground(drawable1);
                 SharedPreferenceUtill.setBoolean(SettingActivity.this,"touch",true);
-
-                startService(new Intent(getApplicationContext(),TouchMusicService.class));
             }
         });
 
@@ -133,8 +131,6 @@ public class SettingActivity extends AppCompatActivity {
                 onSound.setBackground(drawable);
                 offSound.setBackground(drawable1);
                 SharedPreferenceUtill.setBoolean(SettingActivity.this,"touch",false);
-
-                stopService(new Intent(getApplicationContext(),TouchMusicService.class));
             }
         });
 

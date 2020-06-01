@@ -24,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -46,8 +48,9 @@ public class StartActivity extends AppCompatActivity {
 
     int count;
     Boolean sound, touch, savename;
-    //  MediaPlayer mMediaSong, mMediaSound;
 
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,23 +81,19 @@ public class StartActivity extends AppCompatActivity {
         startbtn = (Button) findViewById(R.id.startbtn);
         continuebtn = (Button) findViewById(R.id.continuebtn);
 
+        count = sharedPreferenceUtill.getInt(StartActivity.this, "count");
+        sound = sharedPreferenceUtill.getBoolean(StartActivity.this, "sound");
+        touch = sharedPreferenceUtill.getBoolean(StartActivity.this, "touch");
+        savename = sharedPreferenceUtill.getBoolean(StartActivity.this, "savename");
 
-       count = SharedPreferenceUtill.getInt(StartActivity.this, "count");
-       sound = SharedPreferenceUtill.getBoolean(StartActivity.this,"sound");
-       touch = SharedPreferenceUtill.getBoolean(StartActivity.this,"touch");
-       savename = SharedPreferenceUtill.getBoolean(StartActivity.this, "savename");
 
+
+        mAuth = FirebaseAuth.getInstance();
 
         Glide.with(this).load(R.raw.start_page).into(back);
 
-        startService(new Intent(getApplicationContext(),MusicService.class));
-
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                decorView.playSoundEffect(SoundEffectConstants.CLICK);
-//            }
-//        });
+       startService(new Intent(getApplicationContext(), MusicService.class));
+        stopService(new Intent(getApplicationContext(), TotalMusic.class));
 
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,46 +108,62 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 db.execSQL(SQL_DELETE_TABLE);
                 db2.execSQL(SQL_CREATE_USER_TABLE);
-                // mMediaSound.start();
                 signOut();
                 signInAnonymously();
+
                 Resources res1 = getResources();
                 Drawable drawable = res1.getDrawable(R.drawable.start_btn_off);
                 startbtn.setBackground(drawable);
-                SharedPreferenceUtill.setInt(StartActivity.this, "count", 1);
-                SharedPreferenceUtill.setBoolean(StartActivity.this,"savename",true);
-                SharedPreferenceUtill.setBoolean(StartActivity.this,"g0",false);
-                SharedPreferenceUtill.setBoolean(StartActivity.this,"g1",false);
-                SharedPreferenceUtill.setBoolean(StartActivity.this,"g2",false);
+                sharedPreferenceUtill.setInt(StartActivity.this, "count", 1);
+                sharedPreferenceUtill.setBoolean(StartActivity.this, "savename", true);
+                if (sound == false) {
+                    sharedPreferenceUtill.setBoolean(StartActivity.this, "sound", true);
+                }
+                if (touch == false) {
+                    sharedPreferenceUtill.setBoolean(StartActivity.this, "touch", true);
+                }
 
 
-
-                if(sound == false){SharedPreferenceUtill.setBoolean(StartActivity.this,"sound",true);}
-                if(touch == false){SharedPreferenceUtill.setBoolean(StartActivity.this,"touch",true);}
                 Intent intent = new Intent(StartActivity.this, PrologueActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
+        if (count <= 1) {
+            Resources res1 = getResources();
+            Drawable drawable = res1.getDrawable(R.drawable.continue_btn_off);
+            continuebtn.setBackground(drawable);
+            continuebtn.setClickable(false);
 
-        continuebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db.execSQL(SQL_DELETE_TABLE);
-                db2.execSQL(SQL_CREATE_USER_TABLE);
-                Resources res1 = getResources();
-                Drawable drawable = res1.getDrawable(R.drawable.continue_btn_off);
-
-                continuebtn.setBackground(drawable);
-
-                SharedPreferenceUtill.setInt(StartActivity.this, "count", count-1);
-                SharedPreferenceUtill.setBoolean(StartActivity.this,"savename",false);
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
+            if (sound == false) {
+                sharedPreferenceUtill.setBoolean(StartActivity.this, "sound", true);
             }
-        });
+            if (touch == false) {
+                sharedPreferenceUtill.setBoolean(StartActivity.this, "touch", true);
+            }
+        } else {
+            continuebtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.execSQL(SQL_DELETE_TABLE);
+                    db2.execSQL(SQL_CREATE_USER_TABLE);
+                    Resources res1 = getResources();
+                    Drawable drawable = res1.getDrawable(R.drawable.continue_btn_off);
+
+                    continuebtn.setBackground(drawable);
+
+
+                    sharedPreferenceUtill.setInt(StartActivity.this, "count", count - 1);
+                    sharedPreferenceUtill.setBoolean(StartActivity.this, "savename", false);
+                    sharedPreferenceUtill.setBoolean(StartActivity.this, "sound", sound);
+                    sharedPreferenceUtill.setBoolean(StartActivity.this, "touch", touch);
+                    Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
     }
 
     private void signInAnonymously() {
@@ -162,7 +177,7 @@ public class StartActivity extends AppCompatActivity {
 
                 } else {
                     Log.w(TAG, "signInAnonymously : failure", task.getException());
-                    Toast.makeText(StartActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StartActivity.this, "인터넷 연결 확인해주세요.\n 이후 게임 진행에 큰 문제 발생!", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
 
@@ -235,5 +250,6 @@ public class StartActivity extends AppCompatActivity {
     public void onBackPressed(){
         Intent intent = new Intent(StartActivity.this,EndGameActivity.class);
         startActivity(intent);
+
     }
 }

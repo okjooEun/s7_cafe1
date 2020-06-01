@@ -12,12 +12,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +32,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import static com.example.s7_cafe.UserInputContract.UserTable.SQL_CREATE_USER_TABLE;
+import static com.example.s7_cafe.UserInputContract.UserTable.SQL_DELETE_TABLE;
 import static com.example.s7_cafe.UserInputContract.UserTable.TABLE_USER;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtTalk, txtTalk2, guestname, datetext;
     FrameLayout frame;
 
-    String customarray[], blackarray[], customname[], blackname[], name;
+    String name;
 
     Boolean touchonoff, savename;
     Boolean come = false;
@@ -59,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     Drawable drawable;
     SharedPreferenceUtill sharedPreference;
     ArrayList<Drawable> drawables = new ArrayList<Drawable>();
-    ArrayList<String> cuslist, cuslist2, cuslist3, cuslist4;
+    ArrayList<String> cuslist, cuslist2, cuslist3, cuslist4, mlist1;
     Handler handler = new Handler();
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -79,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         stopService(new Intent(getApplicationContext(), MusicService.class));
+        startService(new Intent(getApplicationContext(), TotalMusic.class));
 
         db = userdbhelper.getWritableDatabase();
 
@@ -124,29 +131,24 @@ public class MainActivity extends AppCompatActivity {
         sharedPreference = new SharedPreferenceUtill();
         count = sharedPreference.getInt(this, "count");
 
-        touchonoff = sharedPreference.getBoolean(this, "sound");
+        //세팅값 1초마다 가져오기
+        TimerTask myTask = new TimerTask() {
+            @Override
+            public void run() {
+                touchonoff = sharedPreference.getBoolean(MainActivity.this,"touch");
+            }
+        };
+        Timer timer1 = new Timer();
+        timer1.schedule(myTask, 1000,1000);
+
 
         savename = sharedPreference.getBoolean(this, "savename");
 
         come = sharedPreference.getBoolean(this,"come");
 
-//        pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-//        angry = pool.load(this, R.raw.angry, 1);
-//        bip = pool.load(this, R.raw.wrong, 1);
 
 
-        if (touchonoff == true) {
-            pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-
-            bip = pool.load(this, R.raw.wrong, 1);
-        }
-        if (touchonoff == false) {
-
-            pool = new SoundPool(0, AudioManager.STREAM_MUSIC, 0);
-            bip = pool.load(this, R.raw.wrong, 1);
-        }
-
-        SharedPreferenceUtill.setInt(MainActivity.this, "count", count + 1);
+        sharedPreference.setInt(MainActivity.this, "count", count + 1);
 
 
         timer = new CountDownTimer(15 * 1000, 1000) {
@@ -158,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 //엔딩 화면 바꿔야함
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, TimeOverEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -179,11 +181,6 @@ public class MainActivity extends AppCompatActivity {
         cuslist4 = sharedPreference.getStringArrayPref(this, "list4");
 
 
-        customarray = getResources().getStringArray(R.array.CUSTOM);
-        blackarray = getResources().getStringArray(R.array.BLACK);
-        customname = getResources().getStringArray(R.array.NAME);
-        blackname = getResources().getStringArray(R.array.BLACKNAME);
-
         // 새로시작하기 눌렀을 때 손님 받기
         if(savename == true) {
     switch (count) {
@@ -191,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         case 2:
             datetext.setText("24");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(1);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
                     rand_24day();
@@ -200,17 +197,18 @@ public class MainActivity extends AppCompatActivity {
                     rand_bc();
                     break;
             }
-
             break;
         case 3:
         case 4:
+            stopService(new Intent(getApplicationContext(), TotalMusic.class));
+            startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu1 = getResources();
             Drawable dr2 = gu1.getDrawable(R.drawable.countback_cm);
             lin.setBackground(dr2);
             datetext.setText("25");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
                     rand_24day();
@@ -224,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
             }
             break;
         case 5:
+            stopService(new Intent(getApplicationContext(), TotalMusic.class));
+            startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu2 = getResources();
             Drawable dr3 = gu2.getDrawable(R.drawable.countback_new);
             lin.setBackground(dr3);
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText(" 1");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(3);
 
             switch (j) {
                 case 0:
@@ -257,10 +257,17 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText(" 1");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-
-            txtTalk.setText(cuslist4.get(11));
-            blackString();
-            bcus11();
+            frame.setVisibility(View.INVISIBLE);
+            toast();
+            handler.postDelayed(new Runnable()  {
+                public void run() {
+                    // 시간 지난 후 실행할 코딩
+                    txtTalk.setText(cuslist4.get(11));
+                    frame.setVisibility(View.VISIBLE);
+                    blackString();
+                    bcus11();
+                }
+            }, 2700);
 
             break;
     }
@@ -433,47 +440,47 @@ public class MainActivity extends AppCompatActivity {
                     gcus29();
                     break;
                 case "b0":
-                    txtTalk.setText(blackarray[0]);
+                    txtTalk.setText(cuslist4.get(0));
                     blackString();
                     bcus0();
                     break;
                 case "b1":
-                    txtTalk.setText(blackarray[1]);
+                    txtTalk.setText(cuslist4.get(1));
                     blackString();
                     bcus1();
                     break;
                 case "b2":
-                    txtTalk.setText(blackarray[2]);
+                    txtTalk.setText(cuslist4.get(2));
                     blackString();
                     bcus2();
                     break;
                 case "b3":
-                    txtTalk.setText(blackarray[3]);
+                    txtTalk.setText(cuslist4.get(3));
                     blackString();
                     bcus3();
                     break;
                 case "b4":
-                    txtTalk.setText(blackarray[4]);
+                    txtTalk.setText(cuslist4.get(4));
                     blackString();
                     bcus4();
                     break;
                 case "b5":
-                    txtTalk.setText(blackarray[5]);
+                    txtTalk.setText(cuslist4.get(5));
                     blackString();
                     bcus5();
                     break;
                 case "b6":
-                    txtTalk.setText(blackarray[6]);
+                    txtTalk.setText(cuslist4.get(6));
                     blackString();
                     bcus6();
                     break;
                 case "b7":
-                    txtTalk.setText(blackarray[7]);
+                    txtTalk.setText(cuslist4.get(7));
                     blackString();
                     bcus7();
                     break;
                 case "b8":
-                    txtTalk.setText(blackarray[8]);
+                    txtTalk.setText(cuslist4.get(8));
                     frame.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -483,23 +490,22 @@ public class MainActivity extends AppCompatActivity {
                             imageView16.setVisibility(View.INVISIBLE);
                             setting.setVisibility(View.INVISIBLE);
                             frame.setClickable(false);
-                            frame.setBackground(null);
                         }
                     });
                     bcus8();
                     break;
                 case "b9":
-                    txtTalk.setText(blackarray[9]);
+                    txtTalk.setText(cuslist4.get(9));
                     blackString();
                     bcus9();
                     break;
                 case "b10":
-                    txtTalk.setText(blackarray[10]);
+                    txtTalk.setText(cuslist4.get(10));
                     blackString();
                     bcus10();
                     break;
                 case "b11":
-                    txtTalk.setText(blackarray[11]);
+                    txtTalk.setText(cuslist4.get(11));
                     blackString();
                     bcus11();
             }
@@ -954,7 +960,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
-                intent.putExtra("bil1", "핫\n카페모카");
+                intent.putExtra("bil1", "핫\n 모카라떼");
                 insertExtra(14);
                 intent.putExtra("bil2","딸기바나나\n주스");
                 insertExtra(16);
@@ -1040,8 +1046,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n아메리카노");
                 insertExtra(1);
-                intent.putExtra("bil2","아이스\n토피넛라떼");
-                insertExtra(17);
+                intent.putExtra("bil2","아이스\n 모카라떼");
+                insertExtra(13);
                 sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
                 startActivity(intent);
                 finish();
@@ -1084,7 +1090,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n토피넛라떼");
                 insertExtra(18);
-                intent.putExtra("bil2","핫\b카페모카");
+                intent.putExtra("bil2","핫\b 모카라떼");
                 insertExtra(14);
                 sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
                 startActivity(intent);
@@ -1185,13 +1191,13 @@ public class MainActivity extends AppCompatActivity {
                 goKitchen.setVisibility(View.VISIBLE);
                 goKitchen.setClickable(true);
                 guestname.setVisibility(View.VISIBLE);
-                frame.setClickable(true);
+                frame.setClickable(false);
                 frame.setBackground(drawable);
                 goKitchen.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
-                        intent.putExtra("bil1", "아이스\n 아메리카노");
+                        intent.putExtra("bil1", "아이스\n아메리카노");
                         insertExtra(1);
                         startActivity(intent);
                         finish();
@@ -1258,14 +1264,14 @@ public class MainActivity extends AppCompatActivity {
                                                     public void onClick(View v) {
                                                         timer.cancel();
                                                         Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
-                                                        intent.putExtra("bil1", " 아이스\n 아메리카노");
+                                                        intent.putExtra("bil1", " 아이스\n아메리카노");
                                                         insertExtra(1);
                                                         startActivity(intent);
                                                         finish();
                                                     }
                                                 });
                                                 guestname.setVisibility(View.VISIBLE);
-                                                frame.setClickable(true);
+                                                frame.setClickable(false);
                                                 frame.setBackground(drawable);
                                             }
                                         });
@@ -1286,7 +1292,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case1").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1384,7 +1390,7 @@ public class MainActivity extends AppCompatActivity {
                 frame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pool.play(bip, 1,1,0,0,1);
+                        sound();
                         Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                         startActivity(intent);
                         finish();
@@ -1413,7 +1419,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case3").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1574,7 +1580,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case4").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1633,7 +1639,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case5").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1686,7 +1692,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case6").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1800,8 +1806,6 @@ public class MainActivity extends AppCompatActivity {
                                                                     }
                                                                 });
                                                                 guestname.setVisibility(View.VISIBLE);
-//                                                                frame.setClickable(true);
-//                                                                frame.setBackground(drawable);
 
                                                             }
                                                         });
@@ -1872,7 +1876,7 @@ public class MainActivity extends AppCompatActivity {
                 imageView16.setVisibility(View.INVISIBLE);
                 txtTalk2.setVisibility(View.VISIBLE);
                 guestname.setText("사장님");
-                txtTalk2.setText("알바씨, 우리 매장 1인 1메뉴인데... 일단 결제했으니 이번만 넘어갈게. ");
+                txtTalk2.setText("알바씨, 우리 매장 1인 1메뉴인데... \n\n일단 결제했으니 이번만 넘어갈게. ");
                 Glide.with(MainActivity.this).load(R.raw.boss_angry).into(guest);
                 guestname.setVisibility(View.VISIBLE);
                 frame.setClickable(false);
@@ -1901,7 +1905,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case7").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -1927,6 +1931,7 @@ public class MainActivity extends AppCompatActivity {
                 databaseReference.child(uid).child("case8").setValue(0);
                 imageView16.setVisibility(View.INVISIBLE);
                 linBtn.setVisibility(View.INVISIBLE);
+                guestname.setText("손님");
                 txtTalk2.setVisibility(View.VISIBLE);
                 txtTalk2.setText("그럼 그걸로 주세요!");
                 goKitchen.setVisibility(View.VISIBLE);
@@ -1954,6 +1959,8 @@ public class MainActivity extends AppCompatActivity {
                 imageView16.setVisibility(View.INVISIBLE);
                 frame.setClickable(false);
                 frame.setBackground(drawable);
+                guestname.setVisibility(View.VISIBLE);
+                guestname.setText("손님");
                 txtTalk2.setVisibility(View.VISIBLE);
                 txtTalk2.setText("아... 네; 그럼... 음... 딸기 스무디 주세요.");
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -1980,7 +1987,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case7").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -2005,14 +2012,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 linBtn.setVisibility(View.INVISIBLE);
-                txtTalk2.setVisibility(View.INVISIBLE);
+                txtTalk2.setVisibility(View.VISIBLE);
                 guest.setVisibility(View.INVISIBLE);
-                guestname.setVisibility(View.INVISIBLE);
-                frame.setVisibility(View.INVISIBLE);
-                pool.play(bip, 1, 1, 0, 0, 1);
+                guestname.setVisibility(View.VISIBLE);
+                frame.setVisibility(View.VISIBLE);
+                sound();
                 Intent intent = new Intent(MainActivity.this, TrashEndingActivity.class);
                 intent.putExtra("trash",t);
                 startActivity(intent);
+                guestname.setText("나");
+                txtTalk2.setText("쓰레기,,,,,,,,,,우엑,,,,,,,윽,,,,");
             }
         });
 
@@ -2022,14 +2031,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 linBtn.setVisibility(View.INVISIBLE);
-                txtTalk2.setVisibility(View.INVISIBLE);
+                txtTalk2.setVisibility(View.VISIBLE);
                 guest.setVisibility(View.INVISIBLE);
-                guestname.setVisibility(View.INVISIBLE);
-                frame.setVisibility(View.INVISIBLE);
-                pool.play(bip, 1, 1, 0, 0, 1);
+                guestname.setVisibility(View.VISIBLE);
+                frame.setVisibility(View.VISIBLE);
+                sound();
                 Intent intent = new Intent(MainActivity.this, TrashEndingActivity.class);
                 intent.putExtra("trash",t);
                 startActivity(intent);
+                guestname.setText("나");
+                txtTalk2.setText("쓰레기,,,,,,,,,,우엑,,,,,,,윽,,,,");
             }
         });
 
@@ -2038,14 +2049,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 linBtn.setVisibility(View.INVISIBLE);
-                txtTalk2.setVisibility(View.INVISIBLE);
+                txtTalk2.setVisibility(View.VISIBLE);
                 guest.setVisibility(View.INVISIBLE);
-                guestname.setVisibility(View.INVISIBLE);
-                frame.setVisibility(View.INVISIBLE);
-                pool.play(bip, 1, 1, 0, 0, 1);
+                guestname.setVisibility(View.VISIBLE);
+                frame.setVisibility(View.VISIBLE);
+                sound();
                 Intent intent = new Intent(MainActivity.this, TrashEndingActivity.class);
                 intent.putExtra("trash",t);
                 startActivity(intent);
+                guestname.setText("나");
+                txtTalk2.setText("쓰레기,,,,,,,,,,우엑,,,,,,,윽,,,,");
+
+
             }
         });
     }
@@ -2054,7 +2069,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreference.setString(MainActivity.this, "name", "b9");
         goKitchen.setVisibility(View.INVISIBLE);
         guestname.setText("손님");
-        btnSelect1.setText("단 커피 종류를 찾으신다면, 카페모카나 바닐라라떼는 어떠세요?");
+        btnSelect1.setText("단 커피 종류를 찾으신다면, 모카라떼나 바닐라라떼는 어떠세요?");
         btnSelect2.setText("샷이 추가되면 음료가 달아지는 게 아니고 더 써져요.");
         btnSelect3.setText("(그냥 카페라떼 만들자...)");
 
@@ -2069,16 +2084,17 @@ public class MainActivity extends AppCompatActivity {
                 imageView16.setVisibility(View.INVISIBLE);
                 linBtn.setVisibility(View.INVISIBLE);
                 txtTalk2.setVisibility(View.VISIBLE);
-                txtTalk2.setText("그럼 따뜻한 카페모카로 부탁해요~");
+                txtTalk2.setText("그럼 따뜻한 모카라떼로 부탁해요~");
                 goKitchen.setVisibility(View.VISIBLE);
                 guestname.setVisibility(View.VISIBLE);
+                guestname.setText("손님");
                 frame.setClickable(false);
                 frame.setBackground(drawable);
                 goKitchen.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
-                        intent.putExtra("bil1", "핫\n  카페모카");
+                        intent.putExtra("bil1", "핫\n  모카라떼");
                         insertExtra(14);
                         startActivity(intent);
                         finish();
@@ -2093,8 +2109,10 @@ public class MainActivity extends AppCompatActivity {
                 timer.cancel();
                 linBtn.setVisibility(View.INVISIBLE);
                 imageView16.setVisibility(View.INVISIBLE);
+                guestname.setText("손님");
+                guestname.setVisibility(View.VISIBLE);
                 txtTalk2.setVisibility(View.VISIBLE);
-                txtTalk2.setText("흠흠... 말투가 조금 까칠하네\n그럼 카페모카 따뜻한 걸로 줘요~");
+                txtTalk2.setText("흠흠... 말투가 조금 까칠하네\n\n그럼 모카라떼 따뜻한 걸로 줘요~");
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
                 frame.setClickable(false);
@@ -2105,7 +2123,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
-                        intent.putExtra("bil1", "핫\n  카페모카");
+                        intent.putExtra("bil1", "핫\n  모카라떼");
                         insertExtra(14);
                         startActivity(intent);
                         finish();
@@ -2123,6 +2141,7 @@ public class MainActivity extends AppCompatActivity {
                 txtTalk2.setVisibility(View.VISIBLE);
                 txtTalk2.setText("내가 원했던 건 이런 맛이 아닌데...?");
                 guestname.setVisibility(View.VISIBLE);
+                guestname.setText("손님");
                 frame.setClickable(true);
                 frame.setBackground(drawable);
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -2131,7 +2150,7 @@ public class MainActivity extends AppCompatActivity {
                 frame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pool.play(bip, 1,1,0,0,1);
+                        sound();
                         Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                         startActivity(intent);
                         finish();
@@ -2215,7 +2234,7 @@ public class MainActivity extends AppCompatActivity {
                 String uid = user.getUid();
                 databaseReference.child(uid).child("case11").setValue(0);
                 timer.cancel();
-                pool.play(bip, 1,1,0,0,1);
+                sound();
                 Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                 startActivity(intent);
                 finish();
@@ -2223,7 +2242,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void bcus11 () {
-        Glide.with(MainActivity.this).load(R.raw.bc11).into(guest);
+        Glide.with(MainActivity.this).load(R.raw.bc12).into(guest);
         guestname.setText("손님");
         goKitchen.setVisibility(View.INVISIBLE);
         sharedPreference.setString(MainActivity.this, "name", "b11");
@@ -2249,7 +2268,7 @@ public class MainActivity extends AppCompatActivity {
                 frame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pool.play(bip, 1,1,0,0,1);
+                        sound();
                         Intent intent = new Intent(MainActivity.this, WrongEndingActivity.class);
                         startActivity(intent);
                         finish();
@@ -2299,11 +2318,11 @@ public class MainActivity extends AppCompatActivity {
                 frame.setBackground(drawable);
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
-                databaseReference.child(uid).child("case12").setValue(0);
+                databaseReference.child(uid).child("case12").setValue(1);
                 frame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pool.play(bip, 1, 1, 0, 0, 1);
+                        sound();
                         Intent intent = new Intent(MainActivity.this, WhichEndingActivity.class);
                         startActivity(intent);
                         finish();
@@ -2316,7 +2335,7 @@ public class MainActivity extends AppCompatActivity {
 
     //전체 다 나올 수있음
         public void rand_24day() {
-            i = rand.nextInt(14);
+            i = rand.nextInt(15);
             while ((cuslist.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
@@ -2394,7 +2413,7 @@ public class MainActivity extends AppCompatActivity {
 
         //크리스마스 메뉴
         public void rand_25day(){
-            i = rand.nextInt(4);
+            i = rand.nextInt(5);
             while ((cuslist2.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
@@ -2433,7 +2452,7 @@ public class MainActivity extends AppCompatActivity {
 
         //1월1일 메뉴
         public void rand_1day(){
-            i = rand.nextInt(9);
+            i = rand.nextInt(10);
             while ((cuslist3.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
@@ -2490,7 +2509,7 @@ public class MainActivity extends AppCompatActivity {
 
         //진상손님 랜덤
     public void rand_bc(){
-        i = rand.nextInt(10);
+        i = rand.nextInt(11);
         while ((cuslist4.get(i)).equals("빈칸")) {
             i--;
             if (i == -1) {
@@ -2561,7 +2580,7 @@ public class MainActivity extends AppCompatActivity {
                         imageView16.setVisibility(View.INVISIBLE);
                         setting.setVisibility(View.INVISIBLE);
                         frame.setClickable(false);
-                        frame.setBackground(null);
+                        frame.setVisibility(View.INVISIBLE);
                     }
                 });
                 bcus8();
@@ -2626,6 +2645,27 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void sound(){
+        if (touchonoff == true) {
+            pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+
+            bip = pool.load(this, R.raw.wrong, 1);
+        }
+    }
+    public void toast(){
+        String txt = "마감 후 청소 중...";
+        int time = Toast.LENGTH_SHORT;
+        Toast toast = new Toast(MainActivity.this);
+
+        View view = View.inflate(MainActivity.this,R.layout.activity_toast, null);
+        TextView textView = view.findViewById(R.id.textView);
+        textView.setText(txt);
+        toast.setView(view);
+        toast.setDuration(time);
+        toast.setGravity(Gravity.CENTER,90,0);
+        toast.show();
     }
     public void onBackPressed(){
         Intent intent = new Intent(MainActivity.this,EndGameActivity.class);

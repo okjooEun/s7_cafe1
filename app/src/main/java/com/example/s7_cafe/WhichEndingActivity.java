@@ -31,6 +31,7 @@ public class WhichEndingActivity extends AppCompatActivity {
     Button btnSelect1, btnSelect2;
     TextView txtTalk, txtTalk2, guestname, datetext;
     FrameLayout frame;
+    Boolean onoff;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -80,11 +81,19 @@ public class WhichEndingActivity extends AppCompatActivity {
         Glide.with(this).load(R.raw.boss_normal).into(guest);
 
         guestname.setText("사장님");
-        txtTalk.setText("10일간 같이 일해봤는데 어때? 계속 해볼래?");
+        txtTalk.setText("오늘 마감도 수고했어요. 계속 함께 일할래요?");
         btnSelect1.setText("네! 계속 여기서 일하고 싶습니다. 앞으로도 잘 부탁드립니다!");
         btnSelect2.setText("죄송합니다... 그래도 여러모로 많은 것을 배웠습니다. 그동안 감사합니다.");
 
+        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+        onoff = sharedPreference.getBoolean(this,"sound");
 
+        if(onoff == true){
+            startService(new Intent(getApplicationContext(),GameMusicService.class));
+        }
+        if(onoff == false){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+        }
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
@@ -131,8 +140,6 @@ public class WhichEndingActivity extends AppCompatActivity {
 
                                 final int sum = Integer.parseInt(s);
 
-                                Toast.makeText(WhichEndingActivity.this,"값: " + sum, Toast.LENGTH_SHORT).show();
-
                                 if (sum < 1){
                                     Intent intent = new Intent(WhichEndingActivity.this, Ending1Activity.class);
                                     startActivity(intent);
@@ -166,8 +173,6 @@ public class WhichEndingActivity extends AppCompatActivity {
                                 s = dataSnapshot.getValue().toString();
 
                                 final int sum = Integer.parseInt(s);
-
-                                Toast.makeText(WhichEndingActivity.this,"값: " + sum, Toast.LENGTH_SHORT).show();
 
                                 if (sum < 1){
                                     Intent intent = new Intent(WhichEndingActivity.this, Ending3Activity.class);

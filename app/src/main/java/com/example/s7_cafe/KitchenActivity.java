@@ -24,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.example.s7_cafe.UserInputContract.UserTable.SQL_CREATE_USER_TABLE;
 import static com.example.s7_cafe.UserInputContract.UserTable.SQL_DELETE_TABLE;
@@ -57,8 +59,7 @@ public class KitchenActivity extends AppCompatActivity {
     ImageView icon0, icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8;
     ImageView selectCup, selectWM, selectIng, selectIng2, selectIng3, selectIng4, selectBlen, imageView15, setting, help, correct1,correct2, correct3,calenderview;
     TextView bil1, bil2, bil3, bil4, datetext;
-    int ice, cup, coffee, ingredient1, ingredient2, ingredient3, base, num;
-    //int i = 0;
+    int ice, cup, coffee, ingredient1, ingredient2, ingredient3, base;
     String strColor = "#FF0000";
     int count;
     String a,b,c,d;
@@ -66,7 +67,9 @@ public class KitchenActivity extends AppCompatActivity {
     private CountDownTimer ktimer1, ktimer2, ktimer3, ktimer4;
 
     Boolean checkimg = true;
+    Boolean touchonoff;
 
+    SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
 
     ArrayList<Drawable> drawables = new ArrayList<Drawable>();
     Handler handler = new Handler();
@@ -76,7 +79,7 @@ public class KitchenActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kitchen);
-
+        startService(new Intent(getApplicationContext(), TotalMusic.class));
 
         //소프트키(네비게이션바) 없애기 시작
         View decorView = getWindow().getDecorView();
@@ -231,8 +234,19 @@ public class KitchenActivity extends AppCompatActivity {
         correct2 = (ImageView) findViewById(R.id.correct2);
         correct3 =(ImageView) findViewById(R.id.correct3);
 
-        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+
+        //세팅값 1초마다 가져오기
+        TimerTask myTask = new TimerTask() {
+            @Override
+            public void run() {
+                touchonoff = sharedPreference.getBoolean(KitchenActivity.this,"touch");
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(myTask, 1000,1000);
+
         count = sharedPreference.getInt(this, "count");
+
 
         pool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         bip = pool.load(this, R.raw.wrong, 1);
@@ -277,16 +291,6 @@ public class KitchenActivity extends AppCompatActivity {
                         selectIng3.setImageDrawable(drawable);
                         selectIng3.setTag("icon0");
 
-//                        if (checkimg == true) {
-//                            selectIng.setImageDrawable(drawable);
-//                            checkimg = false;
-//                            selectIng.setTag("icon0");
-//                        } else if (checkimg == false) {
-//                            selectIng2.setVisibility(View.VISIBLE);
-//                            selectIng2.setImageDrawable(drawable);
-//                            checkimg = true;
-//                            selectIng2.setTag("icon0");
-//                        }
                     }
                 });
                 icon1.setOnClickListener(new View.OnClickListener() {
@@ -684,132 +688,6 @@ public class KitchenActivity extends AppCompatActivity {
                     }
                 });
                 break;
-//            case 8:
-//            case 9:
-//            case 10:
-//            case 11:
-//                datetext.setText("26");
-//                icon0.setImageResource(R.drawable.icon0);
-//                icon1.setImageResource(R.drawable.icon1);
-//                icon2.setImageResource(R.drawable.icon2);
-//                icon3.setImageResource(R.drawable.icon3);
-//                icon4.setImageResource(R.drawable.icon4);
-//                icon5.setImageResource(R.drawable.banana_off);
-//                icon6.setImageResource(R.drawable.mash_off);
-//                icon7.setImageResource(R.drawable.toff_off);
-//                icon8.setImageResource(R.drawable.mouse_off);
-//
-//                icon0.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Resources res = getResources();
-//                        final Drawable drawable = res.getDrawable(R.drawable.ice_on);
-//                        selectIng3.setVisibility(View.VISIBLE);
-//                        selectIng3.setImageDrawable(drawable);
-//                        selectIng3.setTag("icon0");
-//                    }
-//                });
-//                icon1.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Resources res = getResources();
-//                        final Drawable drawable = res.getDrawable(R.drawable.coffee_on);
-//
-//                        if (checkimg == true) {
-//                            selectIng.setImageDrawable(drawable);
-//                            checkimg = false;
-//                            selectIng.setTag("icon1");
-//                        } else if (checkimg == false) {
-//                            selectIng2.setVisibility(View.VISIBLE);
-//                            selectIng2.setImageDrawable(drawable);
-//                            checkimg = true;
-//                            selectIng2.setTag("icon1");
-//                        }
-//
-//                    }
-//                });
-//                icon2.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Resources res = getResources();
-//                        final Drawable drawable = res.getDrawable(R.drawable.vanil_on);
-//
-//                        if (checkimg == true) {
-//                            selectIng.setImageDrawable(drawable);
-//                            checkimg = false;
-//                            selectIng.setTag("icon2");
-//                        } else if (checkimg == false) {
-//                            selectIng2.setVisibility(View.VISIBLE);
-//                            selectIng2.setImageDrawable(drawable);
-//                            checkimg = true;
-//                            selectIng2.setTag("icon2");
-//                        }
-//
-//                    }
-//                });
-//                icon3.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Resources res = getResources();
-//                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
-//
-//                        if (checkimg == true) {
-//                            selectIng.setImageDrawable(drawable);
-//                            checkimg = false;
-//                            selectIng.setTag("icon3");
-//                        } else if (checkimg == false) {
-//                            selectIng2.setVisibility(View.VISIBLE);
-//                            selectIng2.setImageDrawable(drawable);
-//                            checkimg = true;
-//                            selectIng2.setTag("icon3");
-//                        }
-//
-//                    }
-//                });
-//                icon4.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Resources res = getResources();
-//                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
-//
-//                        if (checkimg == true) {
-//                            selectIng.setImageDrawable(drawable);
-//                            checkimg = false;
-//                            selectIng.setTag("icon4");
-//                        } else if (checkimg == false) {
-//                            selectIng2.setVisibility(View.VISIBLE);
-//                            selectIng2.setImageDrawable(drawable);
-//                            checkimg = true;
-//                            selectIng2.setTag("icon4");
-//                        }
-//
-//                    }
-//                });
-//                icon5.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        toast();
-//                    }
-//                });
-//                icon6.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        toast();
-//                    }
-//                });
-//                icon7.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        toast();
-//                    }
-//                });
-//                icon8.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        toast();
-//                    }
-//                });
-//                break;
         }
 
         trash = (Button) findViewById(R.id.trash);
@@ -833,7 +711,6 @@ public class KitchenActivity extends AppCompatActivity {
                 cup = 100;
                 insertCup(cup);
                 Resources res = getResources();
-                //databaseReference.child(uid).child("cup").setValue("ice cup");
                 final Drawable drawable = res.getDrawable(R.drawable.icecup_on);
                 selectCup.setImageDrawable(drawable);
             }
@@ -881,7 +758,6 @@ public class KitchenActivity extends AppCompatActivity {
                 base = 106;
                 insertBase(base);
                 Resources res = getResources();
-
                 final Drawable drawable = res.getDrawable(R.drawable.coldmilk_on);
                 selectWM.setImageDrawable(drawable);
             }
@@ -893,7 +769,6 @@ public class KitchenActivity extends AppCompatActivity {
                 base = 107;
                 insertBase(base);
                 Resources res = getResources();
-
                 final Drawable drawable = res.getDrawable(R.drawable.hotmilk_on);
                 selectWM.setImageDrawable(drawable);
             }
@@ -927,7 +802,9 @@ public class KitchenActivity extends AppCompatActivity {
                 insertIngredient2(0);
                 insertIngredient3(0);
 
-                pool.play(waste, 1,1,0,0,1);
+                if(touchonoff == true) {
+                    pool.play(waste, 1, 1, 0, 0, 1);
+                }
 
                 selectCup.setImageDrawable(null);
                 selectWM.setImageDrawable(null);
@@ -936,8 +813,13 @@ public class KitchenActivity extends AppCompatActivity {
                 selectIng2.setImageDrawable(null);
                 selectIng2.setTag("check2");
                 selectIng3.setImageDrawable(null);
+                selectIng3.setTag("check3");
                 selectBlen.setImageDrawable(null);
                 selectIng4.setImageDrawable(null);
+                selectIng4.setTag("check4");
+                selectIng3.setVisibility(View.GONE);
+                selectIng2.setVisibility(View.GONE);
+                selectIng4.setVisibility(View.GONE);
 
                 checkimg = true;
             }
@@ -946,7 +828,9 @@ public class KitchenActivity extends AppCompatActivity {
         recipeBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pool.play(recipe, 1,1,0,0,1);
+                if(touchonoff == true) {
+                    pool.play(recipe, 1, 1, 0, 0, 1);
+                }
                 Intent intent = new Intent(KitchenActivity.this, RecipebookActivity.class);
                 startActivity(intent);
 
@@ -995,6 +879,7 @@ public class KitchenActivity extends AppCompatActivity {
                     ingredient3 = 115;
                     insertIngredient3(ingredient3);
                 }
+
                 executeQuery();
                 checkBill();
 
@@ -1017,7 +902,10 @@ public class KitchenActivity extends AppCompatActivity {
                 selectIng3.setTag("check3");
                 selectBlen.setImageDrawable(null);
                 selectIng4.setImageDrawable(null);
+                selectIng4.setTag("check4");
                 selectIng3.setVisibility(View.GONE);
+                selectIng2.setVisibility(View.GONE);
+                selectIng4.setVisibility(View.GONE);
 
                 //running = false;
                 checkimg = true;
@@ -1027,8 +915,6 @@ public class KitchenActivity extends AppCompatActivity {
 
 
     }
-//        });
-//    }
 
     @Override
     protected void onStart() {
@@ -1037,36 +923,31 @@ public class KitchenActivity extends AppCompatActivity {
     }
 
 
-    class AnimThread extends Thread {
+    public class AnimThread extends Thread {
+        @Override
         public void run() {
             running = true;
+            int index = 0;
+            for (int i = 0; i < 6 && running; i++){
+                final Drawable drawable3 = drawables.get(index);
+                index += 1;
 
-            for (int index = 0; index < 6; index++) {
-                while(running){
-                    final Drawable drawable1;
-                    drawable1 = drawables.get(index);
-                    index++;
-                    if (index == 6) {
-                        index = 0;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        imageView15.setImageDrawable(drawable3);
                     }
-
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            imageView15.setBackground(drawable1);
-                        }
-                    });
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-
-                    }
+                });
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    Thread.currentThread().isInterrupted();
                 }
             }
         }
-    }
 
+    }
 
     public void insertCup(int cup) {
         ContentValues values = new ContentValues();
@@ -1127,13 +1008,13 @@ public class KitchenActivity extends AppCompatActivity {
             thread1.start();
         } else if (getCount == 2) {
             ktimer2.start();
-            thread2.start();
+            thread1.start();
         } else if (getCount == 3) {
             ktimer3.start();
-            thread3.start();
+            thread1.start();
         } else if (getCount == 4) {
             ktimer4.start();
-            thread4.start();
+            thread1.start();
         }
     }
 
@@ -1154,33 +1035,42 @@ public class KitchenActivity extends AppCompatActivity {
                 thread1.interrupt();
             }
             running = false;
+
         } else if (getCount == 1) {
             ktimer2.cancel();
             ktimer1.start();
-            if(thread2.isAlive()){
-                thread2.interrupt();
-            }
-            thread1 = new AnimThread();
-            thread1.start();
+            runningThread();
         } else if (getCount == 2) {
             ktimer3.cancel();
             ktimer2.start();
-            if(thread3.isAlive()){
-                thread3.interrupt();
-            }
-            thread2 = new AnimThread();
-            thread2.start();
+            runningThread();
         } else if (getCount == 3) {
             ktimer4.cancel();
             ktimer3.start();
-            if(thread4.isAlive()){
-                thread4.interrupt();
-            }
-            thread3 = new AnimThread();
-            thread3.start();
+            runningThread();
         }
     }
 
+    public void runningThread() {
+
+        if (thread1.isAlive()) {
+            running = false;
+            thread1.interrupt();
+            drawables.clear();
+        }
+
+        Resources resources0 = getResources();
+        drawables.add(resources0.getDrawable(R.drawable.bar5));
+        drawables.add(resources0.getDrawable(R.drawable.bar4));
+        drawables.add(resources0.getDrawable(R.drawable.bar3));
+        drawables.add(resources0.getDrawable(R.drawable.bar2));
+        drawables.add(resources0.getDrawable(R.drawable.bar1));
+        drawables.add(resources0.getDrawable(R.drawable.bar0));
+
+        thread1 = new AnimThread();
+        thread1.start();
+
+    }
     //빌지 체크
     public void checkBill() {
         db3 = userDbhelper.getReadableDatabase();
@@ -1281,17 +1171,19 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {
+                    pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 1";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",1);
                     startActivity(intent);
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {
+                    pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1318,17 +1210,19 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {
+                   pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 2";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",2);
                     startActivity(intent);
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {
+                    pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1354,17 +1248,18 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 3";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",3);
                     startActivity(intent);
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1390,17 +1285,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {  pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 4";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",4);
                     startActivity(intent);
-                    running = false;
+                  //  running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1426,17 +1321,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 5";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",5);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1463,18 +1358,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 6";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",6);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1501,17 +1395,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 7";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",7);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1537,17 +1431,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 8";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",8);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1573,18 +1467,18 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 9";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",9);
                     startActivity(intent);
-                    running = false;
+               //     running = false;
                     newTimer();
 
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1610,17 +1504,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 10";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",10);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1646,18 +1540,18 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 11";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",11);
                     startActivity(intent);
                     //newTimer();
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1683,17 +1577,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 12";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",12);
                     startActivity(intent);
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1718,17 +1612,17 @@ public class KitchenActivity extends AppCompatActivity {
                     int ingredient3 = cursor.getInt(6);
                 }
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 13";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",13);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {   pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1753,17 +1647,17 @@ public class KitchenActivity extends AppCompatActivity {
                     int ingredient3 = cursor.getInt(6);
                 }
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 14";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",14);
                     startActivity(intent);
-                    running = false;
+                    //running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1790,17 +1684,17 @@ public class KitchenActivity extends AppCompatActivity {
                 }
 
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 15";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",15);
                     startActivity(intent);
-                    running = false;
+                   // running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1825,17 +1719,17 @@ public class KitchenActivity extends AppCompatActivity {
                     int ingredient3 = cursor.getInt(6);
                 }
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) {  pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 16";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",16);
                     startActivity(intent);
-                    running = false;
+                  //  running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1860,17 +1754,17 @@ public class KitchenActivity extends AppCompatActivity {
                     int ingredient3 = cursor.getInt(6);
                 }
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 17";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",17);
                     startActivity(intent);
-                    running = false;
+                 //   running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1895,17 +1789,17 @@ public class KitchenActivity extends AppCompatActivity {
                     int ingredient3 = cursor.getInt(6);
                 }
                 if (cursor.getInt(0) == c2.getInt(1) && cursor.getInt(1) == c2.getInt(2) && cursor.getInt(2) == c2.getInt(3) && cursor.getInt(3) == c2.getInt(4) && cursor.getInt(4) == c2.getInt(5) && cursor.getInt(5) == c2.getInt(6) && cursor.getInt(6) == c2.getInt(7)) {
-                    pool.play(tada, 1,1,0,0,1);
+                    if(touchonoff == true) { pool.play(tada, 1,1,0,0,1);}
                     String sql = "delete from user_input where menu_name = 18";
                     db.execSQL(sql);
                     Intent intent = new Intent(KitchenActivity.this, MakeSuccessActivity.class);
                     intent.putExtra("menuname",18);
                     startActivity(intent);
-                    running = false;
+                 //   running = false;
                     newTimer();
                 } else {
                     //경고 화면 띄우기
-                    pool.play(bip, 1,1,0,0,1);
+                    if(touchonoff == true) {pool.play(bip, 1,1,0,0,1);}
                     Intent intent = new Intent(KitchenActivity.this, WrongKitchenActivity.class);
                     startActivity(intent);
                 }
@@ -1914,6 +1808,7 @@ public class KitchenActivity extends AppCompatActivity {
         }
 
     }
+
     public void onBackPressed(){
         Intent intent = new Intent(KitchenActivity.this,EndGameActivity.class);
         startActivity(intent);

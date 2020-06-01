@@ -5,12 +5,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipebookActivity3 extends AppCompatActivity {
-    Button priv;
+   LinearLayout priv;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class RecipebookActivity3 extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOption);
         //소프트키(네비게이션바) 없애기 끝
 
-        priv = (Button) findViewById(R.id.priv);
+        priv = (LinearLayout) findViewById(R.id.priv);
 
         priv.setOnClickListener(new View.OnClickListener() {
             @Override

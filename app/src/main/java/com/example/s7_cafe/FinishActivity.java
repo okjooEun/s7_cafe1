@@ -15,14 +15,23 @@ public class FinishActivity extends AppCompatActivity {
 
     ImageView setting;
     LinearLayout lin;
+    Boolean onoff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
-        stopService(new Intent(getApplicationContext(),GameMusicService.class));
-        startService(new Intent(getApplicationContext(),EndingMusic2Service.class));
+        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+        onoff = sharedPreference.getBoolean(this,"sound");
+
+        if(onoff == true){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+            startService(new Intent(getApplicationContext(),EndingMusicService.class));
+        }
+        if(onoff == false){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+        }
 
         //소프트키(네비게이션바) 없애기 시작
         View decorView = getWindow().getDecorView();

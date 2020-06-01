@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Ending3Activity extends AppCompatActivity {
     LinearLayout ending3;
     ImageView setting;
-
+Boolean onoff;
     private View decorView;
     private int   uiOption;
 
@@ -22,8 +22,16 @@ public class Ending3Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end3);
-        stopService(new Intent(getApplicationContext(),GameMusicService.class));
-        startService(new Intent(getApplicationContext(),EndingMusic2Service.class));
+        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+        onoff = sharedPreference.getBoolean(this,"sound");
+
+        if(onoff == true){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+            startService(new Intent(getApplicationContext(),EndingMusicService.class));
+        }
+        if(onoff == false){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+        }
 
         //소프트키(네비게이션바) 없애기 시작
         decorView = getWindow().getDecorView();
@@ -43,6 +51,7 @@ public class Ending3Activity extends AppCompatActivity {
 
         ending3 = (LinearLayout) findViewById(R.id.end3);
         setting = (ImageView) findViewById(R.id.setting);
+
         ending3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

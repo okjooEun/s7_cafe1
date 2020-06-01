@@ -1,29 +1,24 @@
 package com.example.s7_cafe;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RecipebookActivity extends AppCompatActivity {
+public class RecipebookActivity5 extends AppCompatActivity {
+    LinearLayout priv;
     int cuscount;
-    LinearLayout next;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipebook);
+        setContentView(R.layout.activity_recipebook5);
 
         //소프트키(네비게이션바) 없애기 시작
-        View decorView = getWindow().getDecorView();
+        final View decorView = getWindow().getDecorView();
 
         int uiOption = getWindow().getDecorView().getSystemUiVisibility();
 
@@ -37,19 +32,20 @@ public class RecipebookActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOption);
         //소프트키(네비게이션바) 없애기 끝
 
-        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
-        cuscount = sharedPreference.getInt(this, "count");
+        priv = (LinearLayout) findViewById(R.id.priv);
 
-        next = (LinearLayout) findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
+
+        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+        cuscount = sharedPreference.getInt(this,"count");
+
+
+        priv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (RecipebookActivity.this, RecipebookActivity2.class);
+                Intent intent = new Intent(RecipebookActivity5.this, RecipebookActivity4.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
     }
 }

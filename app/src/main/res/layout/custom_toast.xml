@@ -15,7 +15,16 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="24dp"
         android:textSize="14dp"
-        android:text="이 재료는 사용할 수 없어요."
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/toast1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="65dp"
+        android:textSize="14dp"
         android:textAlignment="center"
         android:textColor="#000000" />
 </FrameLayout>

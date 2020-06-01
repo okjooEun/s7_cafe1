@@ -7,15 +7,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipebookActivity2 extends AppCompatActivity {
-    Button next, priv;
+    LinearLayout next, priv;
     int cuscount;
-    LinearLayout background;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +37,14 @@ public class RecipebookActivity2 extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOption);
         //소프트키(네비게이션바) 없애기 끝
 
-        next = (Button) findViewById(R.id.next);
-        priv = (Button) findViewById(R.id.priv);
+        next = (LinearLayout) findViewById(R.id.next);
+        priv = (LinearLayout) findViewById(R.id.priv);
 
-        background = (LinearLayout) findViewById(R.id.background);
-
+        priv.setVisibility(View.VISIBLE);
         SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
-        cuscount = sharedPreference.getInt(this,"count");
+        cuscount = sharedPreference.getInt(this, "count");
 
-        if(cuscount >= 5) {
-            Resources re = getResources();
-            Drawable d = re.getDrawable(R.drawable.recipe_middle);
-            background.setBackground(d);
+        if (cuscount >= 4 && cuscount < 6) {
             next.setVisibility(decorView.VISIBLE);
             next.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -58,7 +55,17 @@ public class RecipebookActivity2 extends AppCompatActivity {
                 }
             });
         }
-
+        if (cuscount >= 6) {
+            next.setVisibility(decorView.VISIBLE);
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(RecipebookActivity2.this, RecipebookActivity4.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
         priv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,5 +74,6 @@ public class RecipebookActivity2 extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }

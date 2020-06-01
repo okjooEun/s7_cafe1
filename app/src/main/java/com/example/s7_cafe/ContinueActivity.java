@@ -15,12 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
+// 튜토리얼으로 이동여부 다이얼로그
 public class ContinueActivity extends AppCompatActivity {
     private View    decorView;
     private int   uiOption;
-
+    SharedPreferenceUtill sharedPreferenceUtill = new SharedPreferenceUtill();
     TextView txt;
     Button yes, no;
+    int count;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -45,27 +47,30 @@ public class ContinueActivity extends AppCompatActivity {
         Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getWindow().setGravity(Gravity.CENTER);
 
+        count = sharedPreferenceUtill.getInt(ContinueActivity.this, "count");
+
         yes = (Button) findViewById(R.id.yes);
         no = (Button) findViewById(R.id.no);
-        txt = (TextView)findViewById(R.id.txt);
+        txt = (TextView) findViewById(R.id.txt);
 
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ContinueActivity.this, TutoActivity.class);
-                startActivity(intent);
-                finish();
 
-            }
-        });
+            yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ContinueActivity.this, TutoActivity.class);
+                    startActivity(intent);
+                    finish();
 
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (ContinueActivity.this, DayActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+                }
+            });
+
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ContinueActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
     }
-}

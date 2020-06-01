@@ -64,7 +64,7 @@ public class NewActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference.child(uid).child("total").removeValue();
+                databaseReference.child(uid).removeValue();
                 SharedPreferenceUtill.setInt(NewActivity.this, "count", 1);
                 Intent intent = new Intent(NewActivity.this, DayActivity.class);
                 startActivity(intent);

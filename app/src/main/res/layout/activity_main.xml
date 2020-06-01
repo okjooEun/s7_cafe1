@@ -44,6 +44,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
                 android:src="@drawable/setting" />
 
             <LinearLayout
@@ -147,9 +148,9 @@
 
             <TextView
                 android:id="@+id/guestname"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="18dp"
-                android:layout_marginLeft="45dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/sol"
                 android:textAlignment="center"

@@ -4,11 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="S7 카페 알바"
+        android:icon="@drawable/icon"
+        android:label="카페 알바생 시뮬레이터"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name=".TotalMusic"
+            android:enabled="true"
+            android:exported="true"></service>
         <service
             android:name=".TouchMusicService"
             android:enabled="true"
@@ -94,6 +97,14 @@
             android:name=".RecipebookActivity3"
             android:theme="@style/Theme.MyDialog"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".RecipebookActivity4"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".RecipebookActivity5"
+            android:theme="@style/Theme.MyDialog"
+            android:screenOrientation="landscape" />
         <activity android:name=".TimeOverEndingActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".FinishActivity"
@@ -119,6 +130,7 @@
         <activity android:name=".EndGameActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.MyDialog"/>
+
     </application>
 
 </manifest>

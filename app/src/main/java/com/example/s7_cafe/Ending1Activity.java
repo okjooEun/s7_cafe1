@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Ending1Activity extends AppCompatActivity {
     LinearLayout ending1;
     ImageView setting;
-
+    Boolean onoff;
     private View decorView;
     private int   uiOption;
 
@@ -29,8 +29,18 @@ public class Ending1Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end1);
-        stopService(new Intent(getApplicationContext(),GameMusicService.class));
-        startService(new Intent(getApplicationContext(),EndingMusicService.class));
+
+        SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
+        onoff = sharedPreference.getBoolean(this,"sound");
+
+        if(onoff == true){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+            startService(new Intent(getApplicationContext(),EndingMusicService.class));
+        }
+        if(onoff == false){
+            stopService(new Intent(getApplicationContext(),GameMusicService.class));
+        }
+
 
         //소프트키(네비게이션바) 없애기 시작
         decorView = getWindow().getDecorView();

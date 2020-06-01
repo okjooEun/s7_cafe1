@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+//크리스마스날 배경음
 public class ChristmasMusicService extends Service {
     MediaPlayer mediaPlayer;
-
     public ChristmasMusicService() {
     }
 
@@ -20,14 +23,17 @@ public class ChristmasMusicService extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mediaPlayer.start();
-        return super.onStartCommand(intent, flags, startId);
+
+            mediaPlayer.start();
+
+            return super.onStartCommand(intent, flags, startId);
+
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
 
-        mediaPlayer.stop();
+            mediaPlayer.stop();
     }
 
 
