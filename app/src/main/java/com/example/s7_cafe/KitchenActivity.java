@@ -1,5 +1,6 @@
 package com.example.s7_cafe;
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,11 +16,14 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -47,6 +51,7 @@ public class KitchenActivity extends AppCompatActivity {
     AnimThread thread3 = new AnimThread();
     AnimThread thread4 = new AnimThread();
 
+    Dialog dialog;
 
     SoundPool pool;
     int bip, tada, waste, recipe;
@@ -57,7 +62,7 @@ public class KitchenActivity extends AppCompatActivity {
 
     Button iceCup, iceWater, iceMilk, hotCup, hotWater, hotMilk, blender, recipeBook, btnMake, trash;
     ImageView icon0, icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8;
-    ImageView selectCup, selectWM, selectIng, selectIng2, selectIng3, selectIng4, selectBlen, imageView15, setting, help, correct1,correct2, correct3,calenderview;
+    ImageView selectCup, selectWM, selectIng, selectIng2, selectIng3, selectIng4, selectBlen, imageView15, setting, helpb, correct1,correct2, correct3,calenderview;
     TextView bil1, bil2, bil3, bil4, datetext;
     int ice, cup, coffee, ingredient1, ingredient2, ingredient3, base;
     String strColor = "#FF0000";
@@ -201,7 +206,7 @@ public class KitchenActivity extends AppCompatActivity {
         icon7 = (ImageView) findViewById(R.id.icon7);
         icon8 = (ImageView) findViewById(R.id.icon8);
         setting = (ImageView) findViewById(R.id.setting);
-        help = (ImageView) findViewById(R.id.help);
+        helpb = (ImageView) findViewById(R.id.helpb);
 
 
         iceCup = (Button) findViewById(R.id.iceCup);
@@ -773,11 +778,35 @@ public class KitchenActivity extends AppCompatActivity {
                 selectWM.setImageDrawable(drawable);
             }
         });
-        help.setOnClickListener(new View.OnClickListener() {
+        helpb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(KitchenActivity.this, HelpActivity.class);
-                startActivity(intent1);
+                AlertDialog.Builder adb = new AlertDialog.Builder(KitchenActivity.this);
+
+
+                dialog = adb.create();
+
+                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+                lp.copyFrom(dialog.getWindow().getAttributes());
+                lp.width = 1920;
+                lp.height = 1100;
+
+                dialog.show();
+
+                Window window = dialog.getWindow();
+                window.setAttributes(lp);
+                Resources res = getResources();
+                final Drawable drawable = res.getDrawable(R.drawable.help);
+                window.setBackgroundDrawable(drawable);
+                handler.postDelayed(new Runnable()  {
+                    public void run() {
+                        dialog.cancel();
+                    }
+                }, 3000);
+
+
+
+
             }
         });
         blender.setOnClickListener(new View.OnClickListener() {

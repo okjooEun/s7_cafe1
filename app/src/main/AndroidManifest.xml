@@ -116,7 +116,8 @@
             android:theme="@style/Theme.MyDialog"
             android:screenOrientation="landscape"/>
         <activity android:name=".HelpActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.MyDialog" />
         <activity android:name=".ContinueActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.MyDialog"

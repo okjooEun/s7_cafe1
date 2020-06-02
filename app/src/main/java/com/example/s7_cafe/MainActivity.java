@@ -222,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
             }
             break;
         case 5:
+        case 6:
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
             startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu2 = getResources();
@@ -247,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             break;
-        case 6:
+        case 7:
             Resources gu4 = getResources();
             Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
             lin.setBackground(dr5);
@@ -506,8 +507,18 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "b11":
                     txtTalk.setText(cuslist4.get(11));
+                    Resources gu4 = getResources();
+                    Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
+                    lin.setBackground(dr5);
+                    Resources gu5 = getResources();
+                    Drawable dr6 = gu5.getDrawable(R.drawable.jcalendar);
+                    calenderview.setImageDrawable(dr6);
+                    datetext.setText(" 1");
+                    datetext.setTextColor(Color.parseColor(strColor));
+                    imageView16.setVisibility(View.INVISIBLE);
                     blackString();
                     bcus11();
+
             }
         }
     }
@@ -1859,7 +1870,7 @@ public class MainActivity extends AppCompatActivity {
                         insertExtra(2);
                         intent.putExtra("bil3", "아이스\n 카페라떼");
                         insertExtra(3);
-                        intent.putExtra("bil4", "아이스\n 아메리카노");
+                        intent.putExtra("bil4", "아이스\n아메리카노");
                         insertExtra(1);
                         startActivity(intent);
                         finish();
