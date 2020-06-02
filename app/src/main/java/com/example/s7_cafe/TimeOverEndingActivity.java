@@ -209,7 +209,7 @@ public class TimeOverEndingActivity extends AppCompatActivity {
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     sharedPreference.setInt(TimeOverEndingActivity.this,"count",6);
                     startActivity(intent);
-                }else if (count ==8){
+                }else if (count ==9){
                     Intent intent = new Intent(TimeOverEndingActivity.this, WhichEndingActivity.class);
                     startActivity(intent);
                 }

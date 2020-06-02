@@ -538,6 +538,7 @@ public class KitchenActivity extends AppCompatActivity {
                 break;
             case 6:
             case 7:
+            case 8:
                 Resources res = getResources();
                 final Drawable drawable = res.getDrawable(R.drawable.jcalendar);
                 calenderview.setImageDrawable(drawable);

@@ -141,7 +141,7 @@ public class MakeSuccessActivity extends AppCompatActivity {
                         sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
                         startActivity(intent);
                         finish();
-                    }else if (count ==8){
+                    }else if (count ==9){
                         Intent intent = new Intent(MakeSuccessActivity.this, WhichEndingActivity.class);
                         startActivity(intent);
                         finish();

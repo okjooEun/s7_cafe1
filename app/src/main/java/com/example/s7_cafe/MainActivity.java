@@ -223,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
             break;
         case 5:
         case 6:
+        case 7:
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
             startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu2 = getResources();
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             break;
-        case 7:
+        case 8:
             Resources gu4 = getResources();
             Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
             lin.setBackground(dr5);
@@ -307,6 +308,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 5:
                 case 6:
+                case 7:
+                case 8:
                     Resources gu2 = getResources();
                     Drawable dr3 = gu2.getDrawable(R.drawable.countback_new);
                     lin.setBackground(dr3);

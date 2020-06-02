@@ -139,6 +139,7 @@ public class DayActivity extends AppCompatActivity {
             case 5:
             case 6:
             case 7:
+            case 8:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 //마지막 손님 추가
