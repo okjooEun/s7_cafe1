@@ -244,7 +244,7 @@ public class KitchenActivity extends AppCompatActivity {
         TimerTask myTask = new TimerTask() {
             @Override
             public void run() {
-                touchonoff = sharedPreference.getBoolean(KitchenActivity.this,"touch");
+               reset();
             }
         };
         Timer timer = new Timer();
@@ -1836,6 +1836,10 @@ public class KitchenActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void reset(){
+        touchonoff = sharedPreference.getBoolean(KitchenActivity.this,"touch");
     }
 
     public void onBackPressed(){
