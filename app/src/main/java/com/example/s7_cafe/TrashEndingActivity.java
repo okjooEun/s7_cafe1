@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,20 +70,44 @@ public class TrashEndingActivity extends AppCompatActivity {
         }
 
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
+            public void run() {
 
-                if (count == 3) {
+                if (count == 6) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 5) {
+                } else if (count == 12) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 7) {
-                    Intent intent = new Intent(TrashEndingActivity.this, WhichEndingActivity.class);
+                } else if (count == 24) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 33) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 43) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 53) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 66) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 80) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 95) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
@@ -91,12 +116,11 @@ public class TrashEndingActivity extends AppCompatActivity {
                     finish();
                 }
             }
-
-        });
-
+        }, 1100);
     }
-    public void onBackPressed(){
-        Intent intent = new Intent(TrashEndingActivity.this,EndGameActivity.class);
-        startActivity(intent);
-    }
-}
+
+            public void onBackPressed() {
+                Intent intent = new Intent(TrashEndingActivity.this, EndGameActivity.class);
+                startActivity(intent);
+            }
+        }

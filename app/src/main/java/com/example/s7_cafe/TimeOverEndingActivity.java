@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class TimeOverEndingActivity extends AppCompatActivity {
@@ -202,20 +203,47 @@ public class TimeOverEndingActivity extends AppCompatActivity {
         lin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(count == 3) {
+                if(count == 6) {
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
-                } else if (count ==5){
+                    finish();
+                } else if (count ==12){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
-                    sharedPreference.setInt(TimeOverEndingActivity.this,"count",6);
                     startActivity(intent);
-                }else if (count ==9){
-                    Intent intent = new Intent(TimeOverEndingActivity.this, WhichEndingActivity.class);
+                    finish();
+                } else if (count ==24){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
+                    finish();
+                } else if (count ==33){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count ==43){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count ==53){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count ==66){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count ==80){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count ==95){
+                    Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else{
                     Intent intent = new Intent(TimeOverEndingActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 finish();
             }

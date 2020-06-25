@@ -114,7 +114,7 @@ public class StartActivity extends AppCompatActivity {
                 Resources res1 = getResources();
                 Drawable drawable = res1.getDrawable(R.drawable.start_btn_off);
                 startbtn.setBackground(drawable);
-                sharedPreferenceUtill.setInt(StartActivity.this, "count", 1);
+                sharedPreferenceUtill.setInt(StartActivity.this, "count", 0);
                 sharedPreferenceUtill.setBoolean(StartActivity.this, "savename", true);
                 if (sound == false) {
                     sharedPreferenceUtill.setBoolean(StartActivity.this, "sound", true);

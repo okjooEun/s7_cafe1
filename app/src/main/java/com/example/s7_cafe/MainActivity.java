@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     Drawable drawable;
     SharedPreferenceUtill sharedPreference;
     ArrayList<Drawable> drawables = new ArrayList<Drawable>();
-    ArrayList<String> cuslist, cuslist2, cuslist3, cuslist4, mlist1;
+    ArrayList<String> cuslist, cuslist2, cuslist3, cuslist4, cuslist6, cuslist8,cuslist10, blacklist;
     Handler handler = new Handler();
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -147,10 +147,6 @@ public class MainActivity extends AppCompatActivity {
         come = sharedPreference.getBoolean(this,"come");
 
 
-
-        sharedPreference.setInt(MainActivity.this, "count", count + 1);
-
-
         timer = new CountDownTimer(15 * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -169,61 +165,190 @@ public class MainActivity extends AppCompatActivity {
         };
         Resources resources = getResources();
 
+        sharedPreference.setInt(MainActivity.this, "count", count + 1);
+
         drawables.add(resources.getDrawable(R.drawable.selec_bar5));
         drawables.add(resources.getDrawable(R.drawable.selec_bar4));
         drawables.add(resources.getDrawable(R.drawable.selec_bar3));
         drawables.add(resources.getDrawable(R.drawable.selec_bar2));
         drawables.add(resources.getDrawable(R.drawable.selec_bar1));
         drawables.add(resources.getDrawable(R.drawable.selec_bar0));
+        blacklist = sharedPreference.getStringArrayPref(this,"black");
         cuslist = sharedPreference.getStringArrayPref(this, "list");
         cuslist2 = sharedPreference.getStringArrayPref(this,"list2");
         cuslist3 = sharedPreference.getStringArrayPref(this,"list3");
         cuslist4 = sharedPreference.getStringArrayPref(this, "list4");
 
 
+
         // 새로시작하기 눌렀을 때 손님 받기
         if(savename == true) {
     switch (count) {
-        case 1:
-        case 2:
+        case 0: case 1: case 2: case 3: case 4: case 5:
+            datetext.setText("23");
+            imageView16.setVisibility(View.INVISIBLE);
+
+            rand_23day();
+            break;
+        case 6: case 7: case 8: case 9: case 10: case 11:
             datetext.setText("24");
             imageView16.setVisibility(View.INVISIBLE);
             j = rand.nextInt(2);
             switch (j) {
                 case 0:
-                    rand_24day();
+                    rand_23day();
                     break;
                 case 1:
-                    rand_bc();
+                    rand_24day();
                     break;
             }
             break;
-        case 3:
-        case 4:
+        case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
+            datetext.setText("25");
+
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
             startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu1 = getResources();
             Drawable dr2 = gu1.getDrawable(R.drawable.countback_cm);
             lin.setBackground(dr2);
-            datetext.setText("25");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
+            j = rand.nextInt(4);
             switch (j) {
                 case 0:
-                    rand_24day();
+                    rand_23day();
                     break;
                 case 1:
+                    rand_24day();
+                    break;
+                case 2:
                     rand_25day();
+                    break;
+                case 3:
+                    rand_bc();
+                    break;
+            }
+
+            break;
+        case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+            datetext.setText("26");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(4);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
                     break;
                 case 2:
                     rand_bc();
                     break;
             }
+
             break;
-        case 5:
-        case 6:
-        case 7:
+        case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+            datetext.setText("27");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(4);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
+                    break;
+                case 2:
+                    rand_bc();
+                    break;
+            }
+
+            break;
+        case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+            datetext.setText("28");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(4);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
+                    break;
+                case 2:
+                    rand_28day();
+                    break;
+                case 3:
+                    rand_bc();
+                    break;
+            }
+
+            break;
+        case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+            datetext.setText("29");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(4);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
+                    break;
+                case 2:
+                    rand_28day();
+                    break;
+                case 3:
+                    rand_bc();
+                    break;
+            }
+            break;
+        case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+            datetext.setText("30");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(5);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
+                    break;
+                case 2:
+                    rand_28day();
+                    break;
+                case 3:
+                    rand_30day();
+                    break;
+                case 4:
+                    rand_bc();
+                    break;
+            }
+            break;
+        case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
+            datetext.setText("31일차");
+            imageView16.setVisibility(View.INVISIBLE);
+            j = rand.nextInt(5);
+            switch (j) {
+                case 0:
+                    rand_23day();
+                    break;
+                case 1:
+                    rand_24day();
+                    break;
+                case 2:
+                    rand_28day();
+                    break;
+                case 3:
+                    rand_30day();
+                    break;
+                case 4:
+                    rand_bc();
+                    break;
+            }
+            break;
+
+        case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109:
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
             startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu2 = getResources();
@@ -235,21 +360,29 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText(" 1");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
-
+            j = rand.nextInt(6);
             switch (j) {
                 case 0:
-                    rand_24day();
+                    rand_23day();
                     break;
                 case 1:
-                    rand_1day();
+                    rand_24day();
                     break;
                 case 2:
+                    rand_28day();
+                    break;
+                case 3:
+                    rand_30day();
+                    break;
+                case 4:
+                    rand_1day();
+                    break;
+                case 5:
                     rand_bc();
                     break;
             }
             break;
-        case 8:
+        case 110:
             Resources gu4 = getResources();
             Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
             lin.setBackground(dr5);
@@ -291,14 +424,15 @@ public class MainActivity extends AppCompatActivity {
         if (savename == false) {
             name = sharedPreference.getString(MainActivity.this, "name");
             switch(count){
-                case 1:
-                case 2:
+                case 1: case 2: case 3: case 4: case 5:
+                    datetext.setText("23");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 6: case 7: case 8: case 9: case 10: case 11:
                     datetext.setText("24");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-
-                case 3:
-                case 4:
+                case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
                     Resources gu1 = getResources();
                     Drawable dr2 = gu1.getDrawable(R.drawable.countback_cm);
                     lin.setBackground(dr2);
@@ -306,10 +440,31 @@ public class MainActivity extends AppCompatActivity {
                     datetext.setTextColor(Color.parseColor(strColor));
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 5:
-                case 6:
-                case 7:
-                case 8:
+                case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+                    datetext.setText("26");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+                    datetext.setText("27");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+                    datetext.setText("28");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+                    datetext.setText("29");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+                    datetext.setText("30");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
+                    datetext.setText("31");
+                    imageView16.setVisibility(View.INVISIBLE);
+                    break;
+                case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
                     Resources gu2 = getResources();
                     Drawable dr3 = gu2.getDrawable(R.drawable.countback_new);
                     lin.setBackground(dr3);
@@ -319,6 +474,7 @@ public class MainActivity extends AppCompatActivity {
                     datetext.setText(" 1");
                     datetext.setTextColor(Color.parseColor(strColor));
                     imageView16.setVisibility(View.INVISIBLE);
+
                     break;
             }
             switch (name) {
@@ -527,6 +683,198 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 일반 손님
+    //1일차
+    public void gcus00(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_7).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "00");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus01(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_9).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "01");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus02(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_13).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "02");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n카페라떼");
+                insertExtra(4);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus03(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_2).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "03");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n카페라떼");
+                insertExtra(4);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus04(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_14).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "04");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n카페라떼");
+                insertExtra(3);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus05(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_15).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "05");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus06(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_5).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "06");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus07(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_4).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "07");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus08(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_11).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "08");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus09(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_15).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "09");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //2일차
     public void gcus0() {
         guestname.setText("손님");
         Glide.with(MainActivity.this).load(R.raw.f60_1).into(guest);
@@ -540,7 +888,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n아메리카노");
                 insertExtra(1);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -604,7 +952,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(6);
                 intent.putExtra("bil2","핫\n아메리카노");
                 insertExtra(2);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -644,7 +992,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "초코스무디");
                 insertExtra(7);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -666,7 +1014,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(7);
                 intent.putExtra("bil2", "딸기스무디");
                 insertExtra(8);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -686,7 +1034,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n바닐라라떼");
                 insertExtra(5);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -706,7 +1054,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "딸기스무디");
                 insertExtra(8);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -726,7 +1074,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n바닐라라떼");
                 insertExtra(6);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -748,7 +1096,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(1);
                 intent.putExtra("bil2", "딸기스무디");
                 insertExtra(8);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -770,7 +1118,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(3);
                 intent.putExtra("bil2","아이스\n바닐라라떼");
                 insertExtra(5);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -790,7 +1138,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "딸기스무디");
                 insertExtra(8);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -810,7 +1158,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n아메리카노");
                 insertExtra(2);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -832,12 +1180,108 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(4);
                 intent.putExtra("bil2","아이스\n카페라떼");
                 insertExtra(3);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus010(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_2).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "010");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코스무디");
+                insertExtra(7);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus011(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_6).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "011");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus012(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_11).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "012");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기스무디");
+                insertExtra(8);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus013(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_9).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "013");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
                 sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
                 startActivity(intent);
                 finish();
             }
         });
     }
+    public void gcus014(){
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_6).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "014");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //3일차
     public void gcus15() {
         guestname.setText("손님");
         Glide.with(MainActivity.this).load(R.raw.f10_3).into(guest);
@@ -852,7 +1296,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "한정 핫\n초코라떼");
                 insertExtra(10);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
                 startActivity(intent);
                 finish();
             }
@@ -872,7 +1316,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "한정 핫\n초코라떼");
                 insertExtra(10);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
                 startActivity(intent);
                 finish();
             }
@@ -894,7 +1338,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(9);
                 intent.putExtra("bil2","아이스\n아메리카노");
                 insertExtra(1);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
                 startActivity(intent);
                 finish();
             }
@@ -916,7 +1360,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(10);
                 intent.putExtra("bil2","핫\n바닐라라떼");
                 insertExtra(6);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
                 startActivity(intent);
                 finish();
             }
@@ -936,12 +1380,794 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "한정 핫\n초코라떼");
                 insertExtra(10);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
                 startActivity(intent);
                 finish();
             }
         });
     }
+    public void gcus015() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_8).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "015");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "한정 아이스\n초코라떼");
+                insertExtra(9);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus016() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_14).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "016");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "한정 핫\n초코라떼");
+                insertExtra(10);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus017() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_3).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "017");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "한정 핫\n초코라떼");
+                insertExtra(10);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus018() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_13).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "018");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "한정 핫\n초코라떼");
+                insertExtra(10);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list3",cuslist3);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //4일차
+    public void gcus019() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_8).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "019");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n초코라떼");
+                insertExtra(12);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus020() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_11).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "020");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus021() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_16).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "021");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n초코라떼");
+                insertExtra(12);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus022() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_3).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "022");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n카페라떼");
+                insertExtra(3);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus0222() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_1).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "0222");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n초코라떼");
+                insertExtra(11);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus023() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_10).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "023");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n바닐라라떼");
+                insertExtra(5);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus024() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m30_2).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "024");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n카페라떼");
+                insertExtra(3);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus025() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_8).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "025");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus026() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m60_5).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "026");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n카페라떼");
+                insertExtra(4);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus027() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_2).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "027");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기스무디");
+                insertExtra(8);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus028() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_1).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "028");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n아메리카노");
+                insertExtra(2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus029() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_4).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "029");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n바닐라라떼");
+                insertExtra(5);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus030() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_6).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "030");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코스무디");
+                insertExtra(7);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list4",cuslist4);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //6일차
+    public void gcus031() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_11).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "031");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n 모카라떼");
+                insertExtra(14);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus032() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_18).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "032");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n모카라떼");
+                insertExtra(13);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus033() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_14).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "033");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n모카라떼");
+                insertExtra(13);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus034() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_8).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "034");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n모카라떼");
+                insertExtra(13);
+                intent.putExtra("bil2", "핫\n 모카라떼");
+                insertExtra(14);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus035() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_17).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "035");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                intent.putExtra("bil2", "아이스\n모카라떼");
+                insertExtra(13);
+                intent.putExtra("bil3", "딸기스무디");
+                insertExtra(8);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus036() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_18).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "036");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus037() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_3).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "037");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코스무디");
+                insertExtra(7);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus038() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_19).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "038");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                intent.putExtra("bil2", "아이스\n모카라떼");
+                insertExtra(13);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list6",cuslist6);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //8일차
+    public void gcus039() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_9).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "039");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus040() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_7).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "040");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+                intent.putExtra("bil2", "아이스\n모카라떼");
+                insertExtra(13);
+                intent.putExtra("bil3", "핫\n 카페라떼");
+                insertExtra(4);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus041() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_12).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "041");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n 모카라떼");
+                insertExtra(14);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus042() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m60_7).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "057");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus043() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_3).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "043");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus044() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_4).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "044");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus045() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_7).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "045");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n 모카라떼");
+                insertExtra(14);
+                intent.putExtra("bil2", "초코바나나\n주스");
+                insertExtra(15);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus046() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_10).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "046");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+                intent.putExtra("bil2", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus047() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_1).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "047");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus048() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_5).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "048");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+                intent.putExtra("bil2", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus049() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_4).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "049");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기스무디");
+                insertExtra(8);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus050() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_15).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "050");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "딸기바나나\n주스");
+                insertExtra(16);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list8",cuslist8);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    //10일차
     public void gcus20() {
         guestname.setText("손님");
         Glide.with(MainActivity.this).load(R.raw.f30_12).into(guest);
@@ -956,7 +2182,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "초코바나나\n주스");
                 insertExtra(15);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -978,7 +2204,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(14);
                 intent.putExtra("bil2","딸기바나나\n주스");
                 insertExtra(16);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -998,7 +2224,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n토피넛라떼");
                 insertExtra(18);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1018,7 +2244,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n토피넛라떼");
                 insertExtra(17);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1040,7 +2266,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(18);
                 intent.putExtra("bil2","핫\n초코라떼");
                 insertExtra(12);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1062,7 +2288,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(1);
                 intent.putExtra("bil2","아이스\n 모카라떼");
                 insertExtra(13);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1084,7 +2310,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(7);
                 intent.putExtra("bil2", "아이스\n초코라떼");
                 insertExtra(11);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1106,7 +2332,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(18);
                 intent.putExtra("bil2","핫\b 모카라떼");
                 insertExtra(14);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1128,7 +2354,7 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(7);
                 intent.putExtra("bil2","초코바나나\n주스");
                 insertExtra(15);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
@@ -1150,12 +2376,191 @@ public class MainActivity extends AppCompatActivity {
                 insertExtra(17);
                 intent.putExtra("bil2", "핫\n토피넛라떼");
                 insertExtra(18);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
                 startActivity(intent);
                 finish();
             }
         });
     }
+    public void gcus051() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_16).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "051");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n토피넛라떼");
+                insertExtra(18);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus052() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_4).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "052");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n토피넛라떼");
+                insertExtra(17);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus053() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_9).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "053");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n토피넛라떼");
+                insertExtra(17);
+                intent.putExtra("bil2", "핫\n토피넛라떼");
+                insertExtra(18);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus054() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.m20_5).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "054");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n토피넛라떼");
+                insertExtra(17);
+                intent.putExtra("bil2", "딸기바나나\n주스");
+                insertExtra(16);
+                intent.putExtra("bil3", "아이스\n바닐라라떼");
+                insertExtra(5);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus055() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_17).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "055");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n토피넛라떼");
+                insertExtra(18);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus056() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f20_6).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "056");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "핫\n토피넛라떼");
+                insertExtra(18);
+                intent.putExtra("bil2", "핫\n 카페라떼");
+                insertExtra(4);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus057() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f10_5).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "057");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "초코바나나\n주스");
+                insertExtra(15);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void gcus058() {
+        guestname.setText("손님");
+        Glide.with(MainActivity.this).load(R.raw.f30_8).into(guest);
+        goKitchen.setVisibility(View.VISIBLE);
+        goKitchen.setClickable(true);
+        sharedPreference.setString(MainActivity.this, "name", "058");
+
+        goKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
+                intent.putExtra("bil1", "아이스\n아메리카노");
+                insertExtra(1);
+                intent.putExtra("bil2", "아이스\n바닐라라떼");
+                insertExtra(5);
+                intent.putExtra("bil3", "아이스\n모카라떼");
+                insertExtra(13);
+                intent.putExtra("bil4", "아이스\n토피넛라떼");
+                insertExtra(17);
+
+                sharedPreference.setStringArrayPref(MainActivity.this,"list10",cuslist10);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
 
     // 처음 손님 왔을때 누르면 버튼 뜨게 하는거
     public void blackString() {
@@ -2347,10 +3752,91 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //전체 다 나올 수있음
+         //23일 랜덤
+    public void rand_23day(){
+        i = rand.nextInt(16);
+        while ((cuslist.get(i)).equals("빈칸")) {
+            i--;
+            if (i == -1) {
+                i++;
+                while ((cuslist.get(i)).equals("빈칸")) {
+                    i++;
+                }
+            }
+        }
+        txtTalk.setText(cuslist.get(i));
+        switch (i) {
+            case 0: {
+                gcus00();
+                break;
+            }
+            case 1: {
+                gcus01();
+                break;
+            }
+
+            case 2: {
+                gcus02();
+                break;
+            }
+            case 3: {
+                gcus03();
+                break;
+            }
+            case 4: {
+                gcus04();
+                break;
+            }
+            case 5: {
+                gcus05();
+                break;
+            }
+            case 6: {
+                gcus06();
+                break;
+            }
+            case 7: {
+                gcus07();
+                break;
+            }
+            case 8: {
+                gcus08();
+                break;
+            }
+            case 9: { ;
+                gcus09();
+                break;
+            }
+            case 10: {
+                gcus0();
+                break;
+            }
+            case 11: {
+                gcus1();
+                break;
+            }
+            case 12: {
+                gcus2();
+                break;
+            }
+            case 13: {
+                gcus4();
+                break;
+            }
+            case 14: {
+                gcus13();
+                break;
+            }
+            case 15: {
+                gcus14();
+                break;
+            }
+        }
+    }
+         //24일 랜덤
         public void rand_24day() {
-            i = rand.nextInt(15);
-            while ((cuslist.get(i)).equals("빈칸")) {
+            i = rand.nextInt(14);
+            while ((cuslist2.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
                     i++;
@@ -2359,80 +3845,75 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            txtTalk.setText(cuslist.get(i));
+            txtTalk.setText(cuslist2.get(i));
             switch (i) {
                 case 0: {
-                    gcus0();
+                    gcus3();
                     break;
                 }
                 case 1: {
-                    gcus1();
+                    gcus5();
                     break;
                 }
 
                 case 2: {
-                    gcus2();
-                    break;
-                }
-                case 3: {
-                    gcus3();
-                    break;
-                }
-                case 4: {
-                    gcus4();
-                    break;
-                }
-                case 5: {
-                    gcus5();
-                    break;
-                }
-                case 6: {
                     gcus6();
                     break;
                 }
-                case 7: {
+                case 3: {
                     gcus7();
                     break;
                 }
-                case 8: {
+                case 4: {
                     gcus8();
                     break;
                 }
-                case 9: { ;
+                case 5: {
                     gcus9();
                     break;
                 }
-                case 10: {
+                case 6: {
                     gcus10();
                     break;
                 }
-                case 11: {
+                case 7: {
                     gcus11();
                     break;
                 }
-                case 12: {
+                case 8: {
                     gcus12();
                     break;
                 }
-                case 13: {
-                    gcus13();
+                case 9: { ;
+                    gcus010();
                     break;
                 }
-                case 14: {
-                    gcus14();
+                case 10: {
+                    gcus011();
+                    break;
+                }
+                case 11: {
+                    gcus012();
+                    break;
+                }
+                case 12: {
+                    gcus013();
+                    break;
+                }
+                case 13: {
+                    gcus014();
                     break;
                 }
             }
         }
-
-        //크리스마스 메뉴
+        //25일 랜덤
         public void rand_25day(){
-            i = rand.nextInt(5);
-            while ((cuslist2.get(i)).equals("빈칸")) {
+            i = rand.nextInt(9);
+            while ((cuslist3.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
                     i++;
-                    while ((cuslist2.get(i)).equals("빈칸")) {
+                    while ((cuslist3.get(i)).equals("빈칸")) {
                         i++;
                     }
                 }
@@ -2461,22 +3942,222 @@ public class MainActivity extends AppCompatActivity {
                     gcus19();
                     break;
                 }
+                case 5: {
+                    gcus015();
+                    break;
+                }
+                case 6: {
+                    gcus016();
+                    break;
+                }
+                case 7: {
+                    gcus017();
+                    break;
+                }
+                case 8: {
+                    gcus018();
+                    break;
+                }
+
             }
         }
+        //26일 랜덤
+    public void rand_26day(){
+        i = rand.nextInt(13);
+        while ((cuslist4.get(i)).equals("빈칸")) {
+            i--;
+            if (i == -1) {
+                i++;
+                while ((cuslist4.get(i)).equals("빈칸")) {
+                    i++;
+                }
+            }
+        }
+        txtTalk.setText(cuslist2.get(i));
+        switch (i) {
+            case 0: {
+                gcus019();
+                break;
+            }
 
+            case 1: {
+                gcus020();
+                break;
+            }
+
+            case 2: {
+                gcus021();
+                break;
+            }
+            case 3: {
+                gcus022();
+                break;
+            }
+            case 4: {
+                gcus0222();
+                break;
+            }
+            case 5: {
+                gcus023();
+                break;
+            }
+            case 6: {
+                gcus024();
+                break;
+            }
+            case 7: {
+                gcus025();
+                break;
+            }
+            case 8: {
+                gcus026();
+                break;
+            }
+            case 9: {
+                gcus027();
+                break;
+            }
+            case 10: {
+                gcus028();
+                break;
+            }
+            case 11: {
+                gcus029();
+                break;
+            }
+            case 12: {
+                gcus030();
+                break;
+            }
+        }
+    }
+        //28일 랜덤
+        public void rand_28day() {
+        i = rand.nextInt(8);
+        while(cuslist6.get(i).equals("빈칸")) {
+            i--;
+            if (i == -1) {
+                i++;
+                while(cuslist8.get(i).equals("빈칸")) {
+                    i++;
+                }
+            }
+        }
+        txtTalk.setText(cuslist6.get(i));
+        switch (i) {
+            case 0: {
+                gcus031();
+                break;
+            }
+            case 1: {
+                gcus032();
+                break;
+            }
+            case 2: {
+                gcus033();
+                break;
+            }
+            case 3: {
+                gcus034();
+                break;
+            }
+            case 4: {
+                gcus035();
+                break;
+            }
+            case 5: {
+                gcus036();
+                break;
+            }
+            case 6: {
+                gcus037();
+                break;
+            }
+            case 7: {
+                gcus038();
+                break;
+            }
+        }
+    }
+        //30일 랜덤
+        public void rand_30day(){
+        i = rand.nextInt(12);
+        while ((cuslist8.get(i)).equals("빈칸")) {
+            i--;
+            if (i == -1) {
+                i++;
+                while ((cuslist8.get(i)).equals("빈칸")) {
+                    i++;
+                }
+            }
+        }
+        txtTalk.setText(cuslist8.get(i));
+        switch (i) {
+            case 0: {
+                gcus039();
+                break;
+            }
+
+            case 1: {
+                gcus040();
+                break;
+            }
+
+            case 2: {
+                gcus041();
+                break;
+            }
+            case 3: {
+                gcus042();
+                break;
+            }
+            case 4: {
+                gcus043();
+                break;
+            }
+            case 5: {
+                gcus044();
+                break;
+            }
+            case 6: {
+                gcus045();
+                break;
+            }
+            case 7: {
+                gcus046();
+                break;
+            }
+            case 8: {
+                gcus047();
+                break;
+            }
+            case 9: {
+                gcus048();
+                break;
+            }
+            case 10: {
+                gcus049();
+                break;
+            }
+            case 11: {
+                gcus050();
+                break;
+            }
+        }
+    }
         //1월1일 메뉴
         public void rand_1day(){
-            i = rand.nextInt(10);
-            while ((cuslist3.get(i)).equals("빈칸")) {
+            i = rand.nextInt(18);
+            while ((cuslist10.get(i)).equals("빈칸")) {
                 i--;
                 if (i == -1) {
                     i++;
-                    while ((cuslist3.get(i)).equals("빈칸")) {
+                    while ((cuslist10.get(i)).equals("빈칸")) {
                         i++;
                     }
                 }
             }
-            txtTalk.setText(cuslist3.get(i));
+            txtTalk.setText(cuslist10.get(i));
             switch (i) {
                 case 0: {
                     gcus20();
@@ -2518,11 +4199,43 @@ public class MainActivity extends AppCompatActivity {
                     gcus29();
                     break;
                 }
+                case 10: {
+                    gcus051();
+                    break;
+                }
+                case 11: {
+                    gcus052();
+                    break;
+                }
+                case 12: {
+                    gcus053();
+                    break;
+                }
+                case 13: {
+                    gcus054();
+                    break;
+                }
+                case 14: {
+                    gcus055();
+                    break;
+                }
+                case 15: {
+                    gcus056();
+                    break;
+                }
+                case 16: {
+                    gcus057();
+                    break;
+                }
+                case 17: {
+                    gcus058();
+                    break;
+                }
             }
         }
 
         //진상손님 랜덤
-    public void rand_bc(){
+        public void rand_bc(){
         i = rand.nextInt(11);
         while ((cuslist4.get(i)).equals("빈칸")) {
             i--;

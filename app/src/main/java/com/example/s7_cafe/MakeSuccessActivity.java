@@ -132,16 +132,51 @@ public class MakeSuccessActivity extends AppCompatActivity {
                     db2.execSQL(SQL_DELETE_TABLE);
                     db2.execSQL(SQL_CREATE_USER_TABLE);
 
-                    if(count == 3) {
+                    if(count == 6) {
                         Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
                         startActivity(intent);
                         finish();
-                    } else if (count ==5){
+                    } else if (count ==12){
                         Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
-                        sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                       // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
                         startActivity(intent);
                         finish();
-                    }else if (count ==9){
+                    } else if (count ==24){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==33){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==43){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==53){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==66){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==80){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    } else if (count ==95){
+                        Intent intent = new Intent(MakeSuccessActivity.this, DayActivity.class);
+                        // sharedPreference.setInt(MakeSuccessActivity.this,"count",6);
+                        startActivity(intent);
+                        finish();
+                    }else if (count ==110){
                         Intent intent = new Intent(MakeSuccessActivity.this, WhichEndingActivity.class);
                         startActivity(intent);
                         finish();

@@ -274,68 +274,60 @@ public class KitchenActivity extends AppCompatActivity {
         bil4.setText(d);
 
         switch (count) {
-            case 1:
-            case 2:
-            case 3:
+            case 1: case 2: case 3: case 4: case 5:
+                datetext.setText("23");
+                baseicon();
+                icon3.setImageResource(R.drawable.choco_off);
+                icon4.setImageResource(R.drawable.straw_off);
+                icon5.setImageResource(R.drawable.banana_off);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) { toast();
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) { toast(); }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 6: case 7: case 8: case 9: case 10: case 11:
                 datetext.setText("24");
-                icon0.setImageResource(R.drawable.icon0);
-                icon1.setImageResource(R.drawable.icon1);
-                icon2.setImageResource(R.drawable.icon2);
+                baseicon();
                 icon3.setImageResource(R.drawable.icon3);
                 icon4.setImageResource(R.drawable.icon4);
                 icon5.setImageResource(R.drawable.banana_off);
                 icon6.setImageResource(R.drawable.mash_off);
                 icon7.setImageResource(R.drawable.toff_off);
                 icon8.setImageResource(R.drawable.mouse_off);
-                icon0.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.ice_on);
-                        selectIng3.setVisibility(View.VISIBLE);
-                        selectIng3.setImageDrawable(drawable);
-                        selectIng3.setTag("icon0");
 
-                    }
-                });
-                icon1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.coffee_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon1");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon1");
-                        }
-
-                    }
-                });
-                icon2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.vanil_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon2");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon2");
-                        }
-
-                    }
-                });
                 icon3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -399,68 +391,16 @@ public class KitchenActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case 4:
-            case 5:
+            case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
                 datetext.setText("25");
                 datetext.setTextColor(Color.parseColor(strColor));
-                icon0.setImageResource(R.drawable.icon0);
-                icon1.setImageResource(R.drawable.icon1);
-                icon2.setImageResource(R.drawable.icon2);
+                baseicon();
                 icon3.setImageResource(R.drawable.icon3);
                 icon4.setImageResource(R.drawable.icon4);
                 icon5.setImageResource(R.drawable.banana_off);
                 icon6.setImageResource(R.drawable.icon6);
                 icon7.setImageResource(R.drawable.toff_off);
                 icon8.setImageResource(R.drawable.mouse_off);
-                icon0.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.ice_on);
-                        selectIng3.setVisibility(View.VISIBLE);
-                        selectIng3.setImageDrawable(drawable);
-                        selectIng3.setTag("icon0");
-
-                    }
-                });
-                icon1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.coffee_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon1");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon1");
-                        }
-
-                    }
-                });
-                icon2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.vanil_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon2");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon2");
-                        }
-
-                    }
-                });
                 icon3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -536,72 +476,19 @@ public class KitchenActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case 6:
-            case 7:
-            case 8:
+            case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
                 Resources res = getResources();
                 final Drawable drawable = res.getDrawable(R.drawable.jcalendar);
                 calenderview.setImageDrawable(drawable);
                 datetext.setText(" 1");
                 datetext.setTextColor(Color.parseColor(strColor));
-                icon0.setImageResource(R.drawable.icon0);
-                icon1.setImageResource(R.drawable.icon1);
-                icon2.setImageResource(R.drawable.icon2);
+                baseicon();
                 icon3.setImageResource(R.drawable.icon3);
                 icon4.setImageResource(R.drawable.icon4);
                 icon5.setImageResource(R.drawable.banana_on);
                 icon6.setImageResource(R.drawable.mash_off);
                 icon7.setImageResource(R.drawable.toff_icon);
                 icon8.setImageResource(R.drawable.mouse_icon);
-                icon0.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.ice_on);
-                        selectIng3.setVisibility(View.VISIBLE);
-                        selectIng3.setImageDrawable(drawable);
-                        selectIng3.setTag("icon0");
-
-                    }
-                });
-                icon1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.coffee_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon1");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon1");
-                        }
-
-                    }
-                });
-                icon2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Resources res = getResources();
-                        final Drawable drawable = res.getDrawable(R.drawable.vanil_on);
-
-                        if (checkimg == true) {
-                            selectIng.setImageDrawable(drawable);
-                            checkimg = false;
-                            selectIng.setTag("icon2");
-                        } else if (checkimg == false) {
-                            selectIng2.setVisibility(View.VISIBLE);
-                            selectIng2.setImageDrawable(drawable);
-                            checkimg = true;
-                            selectIng2.setTag("icon2");
-                        }
-
-                    }
-                });
                 icon3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -892,7 +779,6 @@ public class KitchenActivity extends AppCompatActivity {
                     ingredient1 = 111;
                     insertIngredient1(ingredient1);
                 }
-
                 if ("icon5".equals(selectIng.getTag()) || "icon5".equals(selectIng2.getTag())) {
                     ingredient2 = 113;
                     insertIngredient2(ingredient2);
@@ -1841,6 +1727,62 @@ public class KitchenActivity extends AppCompatActivity {
 
     public void reset(){
         touchonoff = sharedPreference.getBoolean(KitchenActivity.this,"touch");
+    }
+
+    public void baseicon(){
+        icon0.setImageResource(R.drawable.icon0);
+        icon1.setImageResource(R.drawable.icon1);
+        icon2.setImageResource(R.drawable.icon2);
+
+        icon0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                final Drawable drawable = res.getDrawable(R.drawable.ice_on);
+                selectIng3.setVisibility(View.VISIBLE);
+                selectIng3.setImageDrawable(drawable);
+                selectIng3.setTag("icon0");
+
+            }
+        });
+        icon1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                final Drawable drawable = res.getDrawable(R.drawable.coffee_on);
+
+                if (checkimg == true) {
+                    selectIng.setImageDrawable(drawable);
+                    checkimg = false;
+                    selectIng.setTag("icon1");
+                } else if (checkimg == false) {
+                    selectIng2.setVisibility(View.VISIBLE);
+                    selectIng2.setImageDrawable(drawable);
+                    checkimg = true;
+                    selectIng2.setTag("icon1");
+                }
+
+            }
+        });
+        icon2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                final Drawable drawable = res.getDrawable(R.drawable.vanil_on);
+
+                if (checkimg == true) {
+                    selectIng.setImageDrawable(drawable);
+                    checkimg = false;
+                    selectIng.setTag("icon2");
+                } else if (checkimg == false) {
+                    selectIng2.setVisibility(View.VISIBLE);
+                    selectIng2.setImageDrawable(drawable);
+                    checkimg = true;
+                    selectIng2.setTag("icon2");
+                }
+
+            }
+        });
     }
 
     public void onBackPressed(){

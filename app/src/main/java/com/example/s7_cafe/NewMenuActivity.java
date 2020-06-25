@@ -69,19 +69,23 @@ public class NewMenuActivity extends AppCompatActivity {
         timer.schedule(myTask, 1000,1000);
 
                 switch (cuscount){
+                    // 1일차
+            case 0:
+                textView4.setText("신메뉴 등장!");
+               textView5.setText("아메리카노, 카페라떼가 레시피에 추가되었습니다!");
+                Resources gu = getResources();
+                Drawable ic = gu.getDrawable(R.drawable.ms_ic);
+                Drawable lim = gu.getDrawable(R.drawable.ms_iim);
+                Drawable cal = gu.getDrawable(R.drawable.ms_cal);
+                Drawable cali = gu.getDrawable(R.drawable.ms_cali);
+                menu.setImageDrawable(ic);
+                menu1.setImageDrawable(lim);
+                menu2.setImageDrawable(cal);
+                menu3.setImageDrawable(cali);
+                break;
 
-            case 1:
-//                textView4.setText("신메뉴 등장!");
-//               textView5.setText("아메리카노, 카페라떼가 레시피에 추가되었습니다!");
-//                Resources gu = getResources();
-//                Drawable ic = gu.getDrawable(R.drawable.ms_ic);
-//                Drawable lim = gu.getDrawable(R.drawable.ms_iim);
-//                Drawable cal = gu.getDrawable(R.drawable.ms_cal);
-//                Drawable cali = gu.getDrawable(R.drawable.ms_cali);
-//                menu.setImageDrawable(ic);
-//                menu1.setImageDrawable(lim);
-//                menu2.setImageDrawable(cal);
-//                menu3.setImageDrawable(cali);
+                //2일차
+                case 6:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
@@ -95,9 +99,9 @@ public class NewMenuActivity extends AppCompatActivity {
                 menu1.setImageDrawable(ss);
                 menu2.setImageDrawable(bl);
                 menu3.setImageDrawable(bli);
-
                 break;
-            case 3:
+                //3일차
+            case 12:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
@@ -107,21 +111,47 @@ public class NewMenuActivity extends AppCompatActivity {
                 Drawable cscli = gu2.getDrawable(R.drawable.ms_cscli);
                 menu1.setImageDrawable(cscl);
                 menu2.setImageDrawable(cscli);
-//                textView4.setText("신메뉴 등장!");
-//                textView5.setText("초코스무디, 딸기스무디, 카페라떼가 레시피에 추가되었습니다!");
-//                Resources gu1 = getResources();
-//                Drawable cs = gu1.getDrawable(R.drawable.ms_cs);
-//                Drawable ss = gu1.getDrawable(R.drawable.ms_ss);
-//                Drawable bl = gu1.getDrawable(R.drawable.ms_bl);
-//                Drawable bli = gu1.getDrawable(R.drawable.ms_bli);
-//                menu.setImageDrawable(cs);
-//                menu1.setImageDrawable(ss);
-//                menu2.setImageDrawable(bl);
-//                menu3.setImageDrawable(bli);
                 break;
+                // 4일차
+            case 24:
+                stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                startService(new Intent(getApplicationContext(), TotalMusic.class));
+                textView4.setText("메뉴 변경!");
+                textView5.setText("크리스마스 한정 초콜릿라떼 → 초코라떼");
+                Resources gu4 = getResources();
+                Drawable cli = gu4.getDrawable(R.drawable.ms_cli);
+                Drawable cl = gu4.getDrawable(R.drawable.ms_cl);
+                menu1.setImageDrawable(cli);
+                menu2.setImageDrawable(cl);
+                break;
+                // 6일차
+                case 43:
+                    stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                    startService(new Intent(getApplicationContext(), TotalMusic.class));
+                    textView4.setText("신메뉴 등장!");
+                    textView5.setText("모카라떼가 레시피에 추가되었습니다!");
+                    Resources gu5 = getResources();
+                    Drawable imocha = gu5.getDrawable(R.drawable.new_imocha);
+                    Drawable mocha = gu5.getDrawable(R.drawable.new_mocha);
+                    menu1.setImageDrawable(imocha);
+                    menu2.setImageDrawable(mocha);
+                    break;
 
-            case 5:
-                case 6:
+                    //8일차
+                    case 80:
+                        stopService(new Intent(getApplicationContext(), TotalMusic.class));
+                        startService(new Intent(getApplicationContext(), TotalMusic.class));
+                    textView4.setText("신메뉴 등장!");
+                    textView5.setText("초코바나나주스, 딸기바나나주스가 레시피에 추가되었습니다!");
+                    Resources gu6 = getResources();
+                    Drawable ms_cb = gu6.getDrawable(R.drawable.ms_cb);
+                    Drawable ms_sb = gu6.getDrawable(R.drawable.ms_sb);
+                    menu1.setImageDrawable(ms_cb);
+                    menu2.setImageDrawable(ms_sb);
+                    break;
+
+                    //10일차
+                    case 95:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");
@@ -133,11 +163,6 @@ public class NewMenuActivity extends AppCompatActivity {
                 menu2.setImageDrawable(ms_ntli);
 
                 break;
-
-//            case 6:
-//                textView4.setText("메뉴 변경!");
-//                textView5.setText("크리스마스 한정 초코라떼 → 초코라떼");
-//                break;
         }
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.scale);
