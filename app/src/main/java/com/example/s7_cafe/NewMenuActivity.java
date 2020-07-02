@@ -113,7 +113,7 @@ public class NewMenuActivity extends AppCompatActivity {
                 menu2.setImageDrawable(cscli);
                 break;
                 // 4일차
-            case 23:
+            case 17:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("메뉴 변경!");
@@ -125,7 +125,7 @@ public class NewMenuActivity extends AppCompatActivity {
                 menu2.setImageDrawable(cl);
                 break;
                 // 6일차
-                    case 40: case 41: case 42: case 43: case 45:
+                    case 30: case 31: case 32:
                         stopService(new Intent(getApplicationContext(), TotalMusic.class));
                     startService(new Intent(getApplicationContext(), TotalMusic.class));
                     textView4.setText("신메뉴 등장!");
@@ -138,7 +138,7 @@ public class NewMenuActivity extends AppCompatActivity {
                     break;
 
                     //8일차
-                    case 78: case 79: case 80: case 81:
+                    case 47: case 48: case 49:
                         stopService(new Intent(getApplicationContext(), TotalMusic.class));
                         startService(new Intent(getApplicationContext(), TotalMusic.class));
                     textView4.setText("신메뉴 등장!");
@@ -151,7 +151,7 @@ public class NewMenuActivity extends AppCompatActivity {
                     break;
 
                     //10일차
-                    case 93: case 94: case 95: case 96:
+                    case 67: case 68: case 69:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 textView4.setText("신메뉴 등장!");

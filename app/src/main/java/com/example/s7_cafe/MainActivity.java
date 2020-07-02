@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             break;
-        case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
+        case 12: case 13: case 14: case 15: case 16: case 17:
             datetext.setText("25");
 
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
@@ -232,10 +232,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             break;
-        case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+        case 18: case 19: case 20: case 21: case 22: case 23: case 24:
             datetext.setText("26");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
+            j = rand.nextInt(4);
             switch (j) {
                 case 0:
                 rand_23day();
@@ -244,53 +244,68 @@ public class MainActivity extends AppCompatActivity {
                     rand_24day();
                     break;
                 case 2:
+                    rand_26day();
+                    break;
+                case 3:
                     rand_bc();
                     break;
             }
 
             break;
-        case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+        case 25: case 26: case 27: case 28: case 29: case 30: case 31:
             datetext.setText("27");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(4);
             switch (j) {
                 case 0:
+                    rand_23day();
+                    break;
+                case 1:
                     rand_24day();
                     break;
-                case 1:
+                case 2:
+                    rand_26day();
+                    break;
+                case 3:
                     rand_bc();
                     break;
             }
 
             break;
-        case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+        case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39:
             datetext.setText("28");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_28day();
+                    rand_26day();
                     break;
                 case 1:
+                    rand_28day();
+                    break;
+                case 2:
                     rand_bc();
                     break;
             }
 
             break;
-        case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+        case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47:
             datetext.setText("29");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(2);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_28day();
+                    rand_23day();
                     break;
                 case 1:
+                    rand_28day();
+                    break;
+                case 2:
                     rand_bc();
                     break;
             }
             break;
-        case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+        case 48: case 49: case 50: case 51: case 52: case 53: case 54: case 55: case 56: case 57: case 58:
             datetext.setText("30");
             imageView16.setVisibility(View.INVISIBLE);
             j = rand.nextInt(3);
@@ -306,24 +321,21 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             break;
-        case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
-            datetext.setText("31일차");
+        case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67: case 68:
+            datetext.setText("31");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(3);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
-                    rand_28day();
-                    break;
-                case 1:
                     rand_30day();
                     break;
-                case 2:
+                case 1:
                     rand_bc();
                     break;
             }
             break;
 
-        case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109:
+         case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
             stopService(new Intent(getApplicationContext(), TotalMusic.class));
             startService(new Intent(getApplicationContext(), TotalMusic.class));
             Resources gu2 = getResources();
@@ -348,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             break;
-        case 110:
+        case 79:
             Resources gu4 = getResources();
             Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
             lin.setBackground(dr5);
@@ -391,36 +403,15 @@ public class MainActivity extends AppCompatActivity {
             imageView16.setVisibility(View.INVISIBLE);
             name = sharedPreference.getString(MainActivity.this, "name");
             switch (count) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
+                case 0: case 1: case 2: case 3: case 4:
                     datetext.setText("23");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
+                case 5: case 6: case 7: case 8: case 9: case 10:
                     datetext.setText("24");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
+                case 11: case 12: case 13: case 14: case 15: case 16:
                     Resources gu1 = getResources();
                     Drawable dr2 = gu1.getDrawable(R.drawable.countback_cm);
                     lin.setBackground(dr2);
@@ -428,112 +419,33 @@ public class MainActivity extends AppCompatActivity {
                     datetext.setTextColor(Color.parseColor(strColor));
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
+                case 17: case 18: case 19: case 20: case 21: case 22: case 23:
                     datetext.setText("26");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
+
+                case 24: case 25: case 26: case 27: case 28: case 29: case 30:
                     datetext.setText("27");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
+
+                case 31: case 32:case 33: case 34: case 35: case 36: case 37: case 38:
                     datetext.setText("28");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 53:
-                case 54:
-                case 55:
-                case 56:
-                case 57:
-                case 58:
-                case 59:
-                case 60:
-                case 61:
-                case 62:
-                case 63:
-                case 64:
-                case 65:
+                case 39: case 40: case 41: case 42:case 43: case 44: case 45: case 46: case 47:
                     datetext.setText("29");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 66:
-                case 67:
-                case 68:
-                case 69:
-                case 70:
-                case 71:
-                case 72:
-                case 73:
-                case 74:
-                case 75:
-                case 76:
-                case 77:
-                case 78:
-                case 79:
+                case 48: case 49: case 50: case 51: case 52: case 53: case 54: case 55: case 56: case 57:
                     datetext.setText("30");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 80:
-                case 81:
-                case 82:
-                case 83:
-                case 84:
-                case 85:
-                case 86:
-                case 87:
-                case 88:
-                case 89:
-                case 90:
-                case 91:
-                case 92:
-                case 93:
-                case 94:
+                case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67:
                     datetext.setText("31");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 95:
-                case 96:
-                case 97:
-                case 98:
-                case 99:
-                case 100:
-                case 101:
-                case 102:
-                case 103:
-                case 104:
-                case 105:
-                case 106:
-                case 107:
-                case 108:
-                case 109:
-                case 110:
-                    Resources gu2 = getResources();
+                case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: Resources gu2 = getResources();
                     Drawable dr3 = gu2.getDrawable(R.drawable.countback_new);
                     lin.setBackground(dr3);
                     Resources gu3 = getResources();

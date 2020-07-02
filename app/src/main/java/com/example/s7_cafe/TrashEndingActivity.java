@@ -90,31 +90,31 @@ public class TrashEndingActivity extends AppCompatActivity {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 23) {
+                } else if (count == 17) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 32) {
+                } else if (count == 24) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 42) {
+                } else if (count == 31) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 52) {
+                } else if (count == 39) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 65) {
+                } else if (count == 48) {
+                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else if (count == 68) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
                 } else if (count == 79) {
-                    Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else if (count == 94) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();

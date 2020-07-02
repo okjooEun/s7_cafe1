@@ -152,7 +152,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
             //25일 손님
-            case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22:
+            case 11: case 12: case 13: case 14: case 15: case 16:
                 textView3.setText("3일차");
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
@@ -181,7 +181,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //26일 손님
-            case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31:
+            case 17: case 18: case 19: case 20: case 21: case 22: case 23:
                 textView3.setText("4일차");
                 cus4 = new ArrayList<>();
                 cus4.add("이제는 마시멜로 안 줘요? 아쉽다~ \n\n따뜻한 초코라떼요." );
@@ -211,7 +211,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //27일 손님
-            case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41:
+            case 24: case 25: case 26: case 27: case 28: case 29: case 30:
                 textView3.setText("5일차");
                 rel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -226,7 +226,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //28일 손님
-            case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51:
+            case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38:
                 textView3.setText("6일차");
                 cus6 = new ArrayList<>();
                 cus6.add("바닐라라떼 말고 다른 단 커피가 먹고 싶은데...\n\n아! 모카라떼 따뜻하게 주세요!");
@@ -251,7 +251,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //29일 손님
-            case 52: case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64:
+            case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47:
                 textView3.setText("7일차");
                 rel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -266,7 +266,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //30일 손님
-            case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
+            case 48: case 49: case 50: case 51: case 52: case 53: case 54: case 55: case 56: case 57:
                 textView3.setText("8일차");
                 cus8 = new ArrayList<>();
                 cus8.add("딸바? 와~ 딸바 하나요!");
@@ -296,7 +296,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //31일 손님
-            case 79: case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93:
+            case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67:
                 textView3.setText("9일차");
                 rel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -311,8 +311,7 @@ public class DayActivity extends AppCompatActivity {
                 break;
 
                 //1월 1일 손님
-            case 94: case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
-                textView3.setText("마지막날");
+            case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
                 //마지막 손님 추가

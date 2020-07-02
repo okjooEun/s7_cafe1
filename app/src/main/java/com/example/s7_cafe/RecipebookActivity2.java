@@ -44,7 +44,7 @@ public class RecipebookActivity2 extends AppCompatActivity {
         SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
         cuscount = sharedPreference.getInt(this, "count");
 
-        if (cuscount >= 12 && cuscount < 23) {
+        if (cuscount >= 11 && cuscount < 16) {
             next.setVisibility(decorView.VISIBLE);
             next.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -55,7 +55,7 @@ public class RecipebookActivity2 extends AppCompatActivity {
                 }
             });
         }
-        if (cuscount >= 24) {
+        if (cuscount >= 16) {
             next.setVisibility(decorView.VISIBLE);
             next.setOnClickListener(new View.OnClickListener() {
                 @Override
