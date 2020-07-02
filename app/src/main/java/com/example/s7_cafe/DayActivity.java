@@ -68,20 +68,10 @@ public class DayActivity extends AppCompatActivity {
             }
         });
 
-        rel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         //각 날짜 별로 손님 추가
         switch (cuscount){
             //23일 손님
-            case 0: case 1: case 2: case 3: case 4: case 5:
+            case 0: case 1: case 2: case 3: case 4:
                 textView3.setText("1일차");
                 //첫날부터 마지막날까지 모두 가능한 손님
                cus1 = new ArrayList<>();
@@ -118,11 +108,20 @@ public class DayActivity extends AppCompatActivity {
                 black.add("(지불해야 할 금액보다 적은 금액을 던진다.) \n\n이 동네는 아이스 아메리카노가 뭐 이리 비싸?");
                 black.add("(마감 후 청소 중인 매장에 들어온다.)\n\n어이 거기 아가씨! 여기 달달~하게 커피 한 잔 타와!");
                 sharedPreference.setStringArrayPref(DayActivity.this,"black", black);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
                 break;
 
                 //24일 손님
-            case 6: case 7: case 8: case 9: case 10: case 11:
+            case 5: case 6: case 7: case 8: case 9: case 10:
                 textView3.setText("2일차");
                 cus2 = new ArrayList<>();
                 cus2.add("바닐라라떼, 아메리카노 둘다 따뜻하게요.");
@@ -140,11 +139,20 @@ public class DayActivity extends AppCompatActivity {
                 cus2.add("아가씨, 아이스 아메리카노 주시지요.");
                 cus2.add("오늘 같은 날씨엔 따뜻한 아메리카노 한 잔이 딱이겠어요.");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list2",cus2);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
                 break;
 
             //25일 손님
-            case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
+            case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22:
                 textView3.setText("3일차");
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
@@ -160,10 +168,20 @@ public class DayActivity extends AppCompatActivity {
                 cus3.add("오늘도 안녕~ 특별한 초코라떼 따뜻하게 주세요~");
                 cus3.add("흐음...어디... 따뜻한 초코라떼를 한 잔 마셔볼까?");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list3",cus3);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //26일 손님
-                case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+            case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31:
                 textView3.setText("4일차");
                 cus4 = new ArrayList<>();
                 cus4.add("이제는 마시멜로 안 줘요? 아쉽다~ \n\n따뜻한 초코라떼요." );
@@ -180,18 +198,37 @@ public class DayActivity extends AppCompatActivity {
                 cus4.add("잠 좀 깨게 아이스 바닐라라떼로 주문할게요!");
                 cus4.add("오늘은 초코 스무디로 정했다~! 초코 스무디요!");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list4",cus4);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //27일 손님
-            case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+            case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41:
                 textView3.setText("5일차");
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //28일 손님
-            case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+            case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51:
                 textView3.setText("6일차");
                 cus6 = new ArrayList<>();
-                cus6.add("");
                 cus6.add("바닐라라떼 말고 다른 단 커피가 먹고 싶은데...\n\n아! 모카라떼 따뜻하게 주세요!");
                 cus6.add("오늘은 모카라떼로 마셔볼까~ 아이스로 주세요!");
                 cus6.add("오늘도 힘내세요! 저는 아이스 모카라떼요!");
@@ -201,15 +238,35 @@ public class DayActivity extends AppCompatActivity {
                 cus6.add("초코 스무디 맛있어요...? 그럼 그걸로요.");
                 cus6.add("뭐 마실거냐구? 아이스 아메리카노랑 아이스 모카라떼.");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list6",cus6);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //29일 손님
-            case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+            case 52: case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64:
                 textView3.setText("7일차");
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //30일 손님
-            case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+            case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
                 textView3.setText("8일차");
                 cus8 = new ArrayList<>();
                 cus8.add("딸바? 와~ 딸바 하나요!");
@@ -225,16 +282,36 @@ public class DayActivity extends AppCompatActivity {
                 cus8.add("오늘 아침같이 상큼한 딸기 스무디요!");
                 cus8.add("새로 나온 딸기 바나나 주스가 먹고 싶네요. 그걸로 주세요.");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list8",cus8);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
 
                 break;
 
                 //31일 손님
-            case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
+            case 79: case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93:
                 textView3.setText("9일차");
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
                 break;
 
                 //1월 1일 손님
-            case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
+            case 94: case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
                 textView3.setText("마지막날");
                 stopService(new Intent(getApplicationContext(), TotalMusic.class));
                 startService(new Intent(getApplicationContext(), TotalMusic.class));
@@ -259,6 +336,16 @@ public class DayActivity extends AppCompatActivity {
                 cus10.add("새해 복 많이 받으세요... ...아이스 토피넛 라떼... 주세요...");
                 cus10.add("새해부터 수고하시네요! 토피넛 라떼 따뜻한 걸로 주세요.");
                 sharedPreference.setStringArrayPref(DayActivity.this,"list10",cus10);
+                rel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(DayActivity.this, NewMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
 
                 break;
         }

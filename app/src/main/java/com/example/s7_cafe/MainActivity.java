@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean touchonoff, savename;
     Boolean come = false;
     Random rand = new Random();
-    int i, r, j, count;
+    int i, r, j, count, cuscount;
 
     Drawable drawable;
     SharedPreferenceUtill sharedPreference;
@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
         drawable = res1.getDrawable(R.drawable.speech);
         sharedPreference = new SharedPreferenceUtill();
-        count = sharedPreference.getInt(this, "count");
 
         //세팅값 1초마다 가져오기
         TimerTask myTask = new TimerTask() {
@@ -164,9 +163,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         Resources resources = getResources();
+        count = sharedPreference.getInt(this, "count");
 
         sharedPreference.setInt(MainActivity.this, "count", count + 1);
-
+        cuscount = sharedPreference.getInt(this, "count");
         drawables.add(resources.getDrawable(R.drawable.selec_bar5));
         drawables.add(resources.getDrawable(R.drawable.selec_bar4));
         drawables.add(resources.getDrawable(R.drawable.selec_bar3));
@@ -178,13 +178,15 @@ public class MainActivity extends AppCompatActivity {
         cuslist2 = sharedPreference.getStringArrayPref(this,"list2");
         cuslist3 = sharedPreference.getStringArrayPref(this,"list3");
         cuslist4 = sharedPreference.getStringArrayPref(this, "list4");
-
-
+        cuslist6 = sharedPreference.getStringArrayPref(this, "list6");
+        cuslist8 = sharedPreference.getStringArrayPref(this, "list8");
+        cuslist10 = sharedPreference.getStringArrayPref(this, "list10");
 
         // 새로시작하기 눌렀을 때 손님 받기
         if(savename == true) {
-    switch (count) {
-        case 0: case 1: case 2: case 3: case 4: case 5:
+
+    switch (cuscount) {
+        case 1: case 2: case 3: case 4: case 5:
             datetext.setText("23");
             imageView16.setVisibility(View.INVISIBLE);
 
@@ -233,11 +235,11 @@ public class MainActivity extends AppCompatActivity {
         case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
             datetext.setText("26");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(4);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
+                rand_23day();
+                break;
                 case 1:
                     rand_24day();
                     break;
@@ -250,15 +252,12 @@ public class MainActivity extends AppCompatActivity {
         case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
             datetext.setText("27");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(4);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
                     rand_24day();
                     break;
-                case 2:
+                case 1:
                     rand_bc();
                     break;
             }
@@ -267,18 +266,12 @@ public class MainActivity extends AppCompatActivity {
         case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
             datetext.setText("28");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(4);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
-                    rand_24day();
-                    break;
-                case 2:
                     rand_28day();
                     break;
-                case 3:
+                case 1:
                     rand_bc();
                     break;
             }
@@ -287,18 +280,12 @@ public class MainActivity extends AppCompatActivity {
         case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
             datetext.setText("29");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(4);
+            j = rand.nextInt(2);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
-                    rand_24day();
-                    break;
-                case 2:
                     rand_28day();
                     break;
-                case 3:
+                case 1:
                     rand_bc();
                     break;
             }
@@ -306,21 +293,15 @@ public class MainActivity extends AppCompatActivity {
         case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
             datetext.setText("30");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(5);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
-                    rand_24day();
-                    break;
-                case 2:
                     rand_28day();
                     break;
-                case 3:
+                case 1:
                     rand_30day();
                     break;
-                case 4:
+                case 2:
                     rand_bc();
                     break;
             }
@@ -328,21 +309,15 @@ public class MainActivity extends AppCompatActivity {
         case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
             datetext.setText("31일차");
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(5);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
-                    rand_24day();
-                    break;
-                case 2:
                     rand_28day();
                     break;
-                case 3:
+                case 1:
                     rand_30day();
                     break;
-                case 4:
+                case 2:
                     rand_bc();
                     break;
             }
@@ -360,24 +335,15 @@ public class MainActivity extends AppCompatActivity {
             datetext.setText(" 1");
             datetext.setTextColor(Color.parseColor(strColor));
             imageView16.setVisibility(View.INVISIBLE);
-            j = rand.nextInt(6);
+            j = rand.nextInt(3);
             switch (j) {
                 case 0:
-                    rand_23day();
-                    break;
-                case 1:
-                    rand_24day();
-                    break;
-                case 2:
-                    rand_28day();
-                    break;
-                case 3:
                     rand_30day();
                     break;
-                case 4:
+                case 1:
                     rand_1day();
                     break;
-                case 5:
+                case 2:
                     rand_bc();
                     break;
             }
@@ -397,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable()  {
                 public void run() {
                     // 시간 지난 후 실행할 코딩
-                    txtTalk.setText(cuslist4.get(11));
+                    txtTalk.setText(blacklist.get(11));
                     frame.setVisibility(View.VISIBLE);
                     blackString();
                     bcus11();
@@ -422,17 +388,39 @@ public class MainActivity extends AppCompatActivity {
 }
         // 이어하기 눌렀을 때 손님 받기
         if (savename == false) {
+            imageView16.setVisibility(View.INVISIBLE);
             name = sharedPreference.getString(MainActivity.this, "name");
-            switch(count){
-                case 1: case 2: case 3: case 4: case 5:
+            switch (count) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
                     datetext.setText("23");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 6: case 7: case 8: case 9: case 10: case 11:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
                     datetext.setText("24");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 21: case 22: case 23:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
                     Resources gu1 = getResources();
                     Drawable dr2 = gu1.getDrawable(R.drawable.countback_cm);
                     lin.setBackground(dr2);
@@ -440,31 +428,111 @@ public class MainActivity extends AppCompatActivity {
                     datetext.setTextColor(Color.parseColor(strColor));
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
                     datetext.setText("26");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
                     datetext.setText("27");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
                     datetext.setText("28");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+                case 53:
+                case 54:
+                case 55:
+                case 56:
+                case 57:
+                case 58:
+                case 59:
+                case 60:
+                case 61:
+                case 62:
+                case 63:
+                case 64:
+                case 65:
                     datetext.setText("29");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+                case 66:
+                case 67:
+                case 68:
+                case 69:
+                case 70:
+                case 71:
+                case 72:
+                case 73:
+                case 74:
+                case 75:
+                case 76:
+                case 77:
+                case 78:
+                case 79:
                     datetext.setText("30");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
+                case 80:
+                case 81:
+                case 82:
+                case 83:
+                case 84:
+                case 85:
+                case 86:
+                case 87:
+                case 88:
+                case 89:
+                case 90:
+                case 91:
+                case 92:
+                case 93:
+                case 94:
                     datetext.setText("31");
                     imageView16.setVisibility(View.INVISIBLE);
                     break;
-                case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
+                case 95:
+                case 96:
+                case 97:
+                case 98:
+                case 99:
+                case 100:
+                case 101:
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 106:
+                case 107:
+                case 108:
+                case 109:
+                case 110:
                     Resources gu2 = getResources();
                     Drawable dr3 = gu2.getDrawable(R.drawable.countback_new);
                     lin.setBackground(dr3);
@@ -478,169 +546,408 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             switch (name) {
-                case "0":
+                case "00":
                     txtTalk.setText(cuslist.get(0));
+                    gcus00();
+                    break;
+                case "01":
+                    txtTalk.setText(cuslist.get(1));
+                    gcus01();
+                    break;
+                case "02":
+                    txtTalk.setText(cuslist.get(2));
+                    gcus02();
+                    break;
+                case "03":
+                    txtTalk.setText(cuslist.get(3));
+                    gcus03();
+                    break;
+                case "04":
+                    txtTalk.setText(cuslist.get(4));
+                    gcus04();
+                    break;
+                case "05":
+                    txtTalk.setText(cuslist.get(5));
+                    gcus05();
+                    break;
+                case "06":
+                    txtTalk.setText(cuslist.get(6));
+                    gcus06();
+                    break;
+                case "07":
+                    txtTalk.setText(cuslist.get(7));
+                    gcus07();
+                    break;
+                case "08":
+                    txtTalk.setText(cuslist.get(8));
+                    gcus08();
+                    break;
+                case "09":
+                    txtTalk.setText(cuslist.get(9));
+                    gcus09();
+                case "0":
+                    txtTalk.setText(cuslist.get(10));
                     gcus0();
                     break;
                 case "1":
-                    txtTalk.setText(cuslist.get(1));
+                    txtTalk.setText(cuslist.get(11));
                     gcus1();
                     break;
                 case "2":
-                    txtTalk.setText(cuslist.get(2));
+                    txtTalk.setText(cuslist.get(12));
                     gcus2();
                     break;
-                case "3":
-                    txtTalk.setText(cuslist.get(3));
-                    gcus3();
-                    break;
                 case "4":
-                    txtTalk.setText(cuslist.get(4));
+                    txtTalk.setText(cuslist.get(13));
                     gcus4();
                     break;
-                case "5":
-                    txtTalk.setText(cuslist.get(5));
-                    gcus5();
-                    break;
-                case "6":
-                    txtTalk.setText(cuslist.get(6));
-                    gcus6();
-                    break;
-                case "7":
-                    txtTalk.setText(cuslist.get(7));
-                    gcus7();
-                    break;
-                case "8":
-                    txtTalk.setText(cuslist.get(8));
-                    gcus8();
-                    break;
-                case "9":
-                    txtTalk.setText(cuslist.get(9));
-                    gcus9();
-                    break;
-                case "10":
-                    txtTalk.setText(cuslist.get(10));
-                    gcus10();
-                    break;
-                case "11":
-                    txtTalk.setText(cuslist.get(11));
-                    gcus11();
-                    break;
-                case "12":
-                    txtTalk.setText(cuslist.get(12));
-                    gcus12();
-                    break;
                 case "13":
-                    txtTalk.setText(cuslist.get(13));
+                    txtTalk.setText(cuslist.get(14));
                     gcus13();
                     break;
                 case "14":
-                    txtTalk.setText(cuslist.get(14));
+                    txtTalk.setText(cuslist.get(15));
                     gcus14();
                     break;
-                case "15":
+                case "3":
                     txtTalk.setText(cuslist2.get(0));
+                    gcus3();
+                    break;
+                case "5":
+                    txtTalk.setText(cuslist2.get(1));
+                    gcus5();
+                    break;
+                case "6":
+                    txtTalk.setText(cuslist2.get(2));
+                    gcus6();
+                    break;
+                case "7":
+                    txtTalk.setText(cuslist2.get(3));
+                    gcus7();
+                    break;
+                case "8":
+                    txtTalk.setText(cuslist2.get(4));
+                    gcus8();
+                    break;
+                case "9":
+                    txtTalk.setText(cuslist2.get(5));
+                    gcus9();
+                    break;
+                case "10":
+                    txtTalk.setText(cuslist2.get(6));
+                    gcus10();
+                    break;
+                case "11":
+                    txtTalk.setText(cuslist2.get(7));
+                    gcus11();
+                    break;
+                case "12":
+                    txtTalk.setText(cuslist2.get(8));
+                    gcus12();
+                    break;
+                case "010":
+                    txtTalk.setText(cuslist2.get(9));
+                    gcus010();
+                    break;
+                case "011":
+                    txtTalk.setText(cuslist2.get(10));
+                    gcus011();
+                    break;
+                case "012":
+                    txtTalk.setText(cuslist2.get(11));
+                    gcus012();
+                    break;
+                case "013":
+                    txtTalk.setText(cuslist2.get(12));
+                    gcus013();
+                    break;
+                case "014":
+                    txtTalk.setText(cuslist2.get(13));
+                    gcus014();
+                    break;
+                case "15":
+                    txtTalk.setText(cuslist3.get(0));
                     gcus15();
                     break;
                 case "16":
-                    txtTalk.setText(cuslist2.get(1));
+                    txtTalk.setText(cuslist3.get(1));
                     gcus16();
                     break;
                 case "17":
-                    txtTalk.setText(cuslist2.get(2));
+                    txtTalk.setText(cuslist3.get(2));
                     gcus17();
                     break;
                 case "18":
-                    txtTalk.setText(cuslist2.get(3));
+                    txtTalk.setText(cuslist3.get(3));
                     gcus18();
                     break;
                 case "19":
-                    txtTalk.setText(cuslist2.get(4));
+                    txtTalk.setText(cuslist3.get(4));
                     gcus19();
                     break;
+                case "015":
+                    txtTalk.setText(cuslist3.get(5));
+                    gcus015();
+                    break;
+                case "016":
+                    txtTalk.setText(cuslist3.get(6));
+                    gcus016();
+                    break;
+                case "017":
+                    txtTalk.setText(cuslist3.get(7));
+                    gcus17();
+                    break;
+                case "018":
+                    txtTalk.setText(cuslist3.get(8));
+                    gcus018();
+                    break;
+                case "019":
+                    txtTalk.setText(cuslist4.get(0));
+                    gcus019();
+                    break;
+                case "020":
+                    txtTalk.setText(cuslist4.get(1));
+                    gcus020();
+                    break;
+                case "021":
+                    txtTalk.setText(cuslist4.get(2));
+                    gcus021();
+                    break;
+                case "022":
+                    txtTalk.setText(cuslist4.get(3));
+                    gcus022();
+                    break;
+                case "0222":
+                    txtTalk.setText(cuslist4.get(4));
+                    gcus0222();
+                    break;
+                case "023":
+                    txtTalk.setText(cuslist4.get(5));
+                    gcus023();
+                    break;
+                case "024":
+                    txtTalk.setText(cuslist4.get(6));
+                    gcus024();
+                    break;
+                case "025":
+                    txtTalk.setText(cuslist4.get(7));
+                    gcus025();
+                    break;
+                case "026":
+                    txtTalk.setText(cuslist4.get(8));
+                    gcus026();
+                    break;
+                case "027":
+                    txtTalk.setText(cuslist4.get(9));
+                    gcus027();
+                    break;
+                case "028":
+                    txtTalk.setText(cuslist4.get(10));
+                    gcus028();
+                    break;
+                case "029":
+                    txtTalk.setText(cuslist4.get(11));
+                    gcus029();
+                    break;
+                case "030":
+                    txtTalk.setText(cuslist4.get(12));
+                    gcus030();
+                    break;
+                case "031":
+                    txtTalk.setText(cuslist6.get(0));
+                    gcus031();
+                    break;
+                case "032":
+                    txtTalk.setText(cuslist6.get(1));
+                    gcus032();
+                    break;
+                case "033":
+                    txtTalk.setText(cuslist6.get(2));
+                    gcus033();
+                    break;
+                case "034":
+                    txtTalk.setText(cuslist6.get(3));
+                    gcus034();
+                    break;
+                case "035":
+                    txtTalk.setText(cuslist6.get(4));
+                    gcus035();
+                    break;
+                case "036":
+                    txtTalk.setText(cuslist6.get(5));
+                    gcus036();
+                    break;
+                case "037":
+                    txtTalk.setText(cuslist6.get(6));
+                    gcus037();
+                    break;
+                case "038":
+                    txtTalk.setText(cuslist6.get(7));
+                    gcus038();
+                    break;
+                case "039":
+                    txtTalk.setText(cuslist8.get(0));
+                    gcus039();
+                    break;
+                case "040":
+                    txtTalk.setText(cuslist8.get(1));
+                    gcus040();
+                    break;
+                case "041":
+                    txtTalk.setText(cuslist8.get(2));
+                    gcus041();
+                    break;
+                case "042":
+                    txtTalk.setText(cuslist8.get(3));
+                    gcus042();
+                    break;
+                case "043":
+                    txtTalk.setText(cuslist8.get(4));
+                    gcus043();
+                    break;
+                case "044":
+                    txtTalk.setText(cuslist8.get(5));
+                    gcus044();
+                    break;
+                case "045":
+                    txtTalk.setText(cuslist8.get(6));
+                    gcus045();
+                    break;
+                case "046":
+                    txtTalk.setText(cuslist8.get(7));
+                    gcus046();
+                    break;
+                case "047":
+                    txtTalk.setText(cuslist8.get(8));
+                    gcus047();
+                    break;
+                case "048":
+                    txtTalk.setText(cuslist8.get(9));
+                    gcus048();
+                    break;
+                case "049":
+                    txtTalk.setText(cuslist8.get(10));
+                    gcus049();
+                    ;
+                    break;
+                case "050":
+                    txtTalk.setText(cuslist8.get(11));
+                    gcus050();
+                    break;
                 case "20":
-                    txtTalk.setText(cuslist3.get(0));
+                    txtTalk.setText(cuslist10.get(0));
                     gcus20();
                     break;
                 case "21":
-                    txtTalk.setText(cuslist3.get(1));
+                    txtTalk.setText(cuslist10.get(1));
                     gcus21();
                     break;
                 case "22":
-                    txtTalk.setText(cuslist3.get(2));
+                    txtTalk.setText(cuslist10.get(2));
                     gcus22();
                     break;
                 case "23":
-                    txtTalk.setText(cuslist3.get(3));
+                    txtTalk.setText(cuslist10.get(3));
                     gcus23();
                     break;
                 case "24":
-                    txtTalk.setText(cuslist3.get(4));
+                    txtTalk.setText(cuslist10.get(4));
                     gcus24();
                     break;
                 case "25":
-                    txtTalk.setText(cuslist3.get(5));
+                    txtTalk.setText(cuslist10.get(5));
                     gcus25();
                     break;
-
                 case "26":
-                    txtTalk.setText(cuslist3.get(6));
+                    txtTalk.setText(cuslist10.get(6));
                     gcus26();
                     break;
                 case "27":
-                    txtTalk.setText(cuslist3.get(7));
+                    txtTalk.setText(cuslist10.get(7));
                     gcus27();
                     break;
                 case "28":
-                    txtTalk.setText(cuslist3.get(8));
+                    txtTalk.setText(cuslist10.get(8));
                     gcus28();
                     break;
                 case "29":
-                    txtTalk.setText(cuslist3.get(9));
+                    txtTalk.setText(cuslist10.get(9));
                     gcus29();
                     break;
+                case "051":
+                    txtTalk.setText(cuslist10.get(10));
+                    gcus051();
+                    break;
+                case "052":
+                    txtTalk.setText(cuslist10.get(11));
+                    gcus052();
+                    break;
+                case "053":
+                    txtTalk.setText(cuslist10.get(12));
+                    gcus053();
+                    break;
+                case "054":
+                    txtTalk.setText(cuslist10.get(13));
+                    gcus054();
+                    break;
+                case "055":
+                    txtTalk.setText(cuslist10.get(14));
+                    gcus055();
+                    break;
+                case "056":
+                    txtTalk.setText(cuslist10.get(15));
+                    gcus056();
+                    break;
+                case "057":
+                    txtTalk.setText(cuslist10.get(16));
+                    gcus057();
+                    break;
+                case "058":
+                    txtTalk.setText(cuslist10.get(17));
+                    gcus058();
+                    break;
                 case "b0":
-                    txtTalk.setText(cuslist4.get(0));
+                    txtTalk.setText(blacklist.get(0));
                     blackString();
                     bcus0();
                     break;
                 case "b1":
-                    txtTalk.setText(cuslist4.get(1));
+                    txtTalk.setText(blacklist.get(1));
                     blackString();
                     bcus1();
                     break;
                 case "b2":
-                    txtTalk.setText(cuslist4.get(2));
+                    txtTalk.setText(blacklist.get(2));
                     blackString();
                     bcus2();
                     break;
                 case "b3":
-                    txtTalk.setText(cuslist4.get(3));
+                    txtTalk.setText(blacklist.get(3));
                     blackString();
                     bcus3();
                     break;
                 case "b4":
-                    txtTalk.setText(cuslist4.get(4));
+                    txtTalk.setText(blacklist.get(4));
                     blackString();
                     bcus4();
                     break;
                 case "b5":
-                    txtTalk.setText(cuslist4.get(5));
+                    txtTalk.setText(blacklist.get(5));
                     blackString();
                     bcus5();
                     break;
                 case "b6":
-                    txtTalk.setText(cuslist4.get(6));
+                    txtTalk.setText(blacklist.get(6));
                     blackString();
                     bcus6();
                     break;
                 case "b7":
-                    txtTalk.setText(cuslist4.get(7));
+                    txtTalk.setText(blacklist.get(7));
                     blackString();
                     bcus7();
                     break;
                 case "b8":
-                    txtTalk.setText(cuslist4.get(8));
+                    txtTalk.setText(blacklist.get(8));
                     frame.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -655,17 +962,17 @@ public class MainActivity extends AppCompatActivity {
                     bcus8();
                     break;
                 case "b9":
-                    txtTalk.setText(cuslist4.get(9));
+                    txtTalk.setText(blacklist.get(9));
                     blackString();
                     bcus9();
                     break;
                 case "b10":
-                    txtTalk.setText(cuslist4.get(10));
+                    txtTalk.setText(blacklist.get(10));
                     blackString();
                     bcus10();
                     break;
                 case "b11":
-                    txtTalk.setText(cuslist4.get(11));
+                    txtTalk.setText(blacklist.get(11));
                     Resources gu4 = getResources();
                     Drawable dr5 = gu4.getDrawable(R.drawable.countback_new);
                     lin.setBackground(dr5);
@@ -677,10 +984,13 @@ public class MainActivity extends AppCompatActivity {
                     imageView16.setVisibility(View.INVISIBLE);
                     blackString();
                     bcus11();
+                    break;
+
 
             }
+
         }
-    }
+        }
 
     // 일반 손님
     //1일차
@@ -888,7 +1198,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n아메리카노");
                 insertExtra(1);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
                 startActivity(intent);
                 finish();
             }
@@ -1256,7 +1566,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "아이스\n아메리카노");
                 insertExtra(1);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -1275,7 +1585,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, KitchenActivity.class);
                 intent.putExtra("bil1", "핫\n아메리카노");
                 insertExtra(2);
-                sharedPreference.setStringArrayPref(MainActivity.this,"list",cuslist);
+                sharedPreference.setStringArrayPref(MainActivity.this,"list2",cuslist2);
                 startActivity(intent);
                 finish();
             }
@@ -3840,7 +4150,7 @@ public class MainActivity extends AppCompatActivity {
                 i--;
                 if (i == -1) {
                     i++;
-                    while ((cuslist.get(i)).equals("빈칸")) {
+                    while ((cuslist2.get(i)).equals("빈칸")) {
                         i++;
                     }
                 }
@@ -3918,7 +4228,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            txtTalk.setText(cuslist2.get(i));
+            txtTalk.setText(cuslist3.get(i));
             switch (i) {
                 case 0: {
                     gcus15();
@@ -3973,7 +4283,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        txtTalk.setText(cuslist2.get(i));
+        txtTalk.setText(cuslist4.get(i));
         switch (i) {
             case 0: {
                 gcus019();
@@ -4038,7 +4348,7 @@ public class MainActivity extends AppCompatActivity {
             i--;
             if (i == -1) {
                 i++;
-                while(cuslist8.get(i).equals("빈칸")) {
+                while(cuslist6.get(i).equals("빈칸")) {
                     i++;
                 }
             }
@@ -4237,67 +4547,67 @@ public class MainActivity extends AppCompatActivity {
         //진상손님 랜덤
         public void rand_bc(){
         i = rand.nextInt(11);
-        while ((cuslist4.get(i)).equals("빈칸")) {
+        while ((blacklist.get(i)).equals("빈칸")) {
             i--;
             if (i == -1) {
                 i++;
-                while ((cuslist4.get(i)).equals("빈칸")) {
+                while ((blacklist.get(i)).equals("빈칸")) {
                     i++;
                 }
             }
         }
         switch (i) {
             case 0: {
-                txtTalk.setText(cuslist4.get(0));
+                txtTalk.setText(blacklist.get(0));
                 blackString();
                 bcus0();
                 break;
             }
             case 1: {
-                txtTalk.setText(cuslist4.get(1));
+                txtTalk.setText(blacklist.get(1));
                 blackString();
                 bcus1();
                 break;
             }
             case 2:{
-                txtTalk.setText(cuslist4.get(2));
+                txtTalk.setText(blacklist.get(2));
                 blackString();
                 bcus2();
                 break;
             }
             case 3:{
-                txtTalk.setText(cuslist4.get(3));
+                txtTalk.setText(blacklist.get(3));
                 blackString();
                 bcus3();
                 break;
             }
             case 4:{
-                txtTalk.setText(cuslist4.get(4));
+                txtTalk.setText(blacklist.get(4));
                 blackString();
                 bcus4();
                 break;
             }
             case 5:{
-                txtTalk.setText(cuslist4.get(5));
+                txtTalk.setText(blacklist.get(5));
                 blackString();
                 bcus5();
                 break;
             }
             case 6: {
-                txtTalk.setText(cuslist4.get(6));
+                txtTalk.setText(blacklist.get(6));
                 blackString();
                 bcus6();
                 break;
 
             }
             case 7: {
-                txtTalk.setText(cuslist4.get(7));
+                txtTalk.setText(blacklist.get(7));
                 blackString();
                 bcus7();
                 break;
             }
             case 8:{
-                txtTalk.setText(cuslist4.get(8));
+                txtTalk.setText(blacklist.get(8));
                 frame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -4314,13 +4624,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case 9: {
-                txtTalk.setText(cuslist4.get(9));
+                txtTalk.setText(blacklist.get(9));
                 blackString();
                 bcus9();
                 break;
             }
             case 10: {
-                txtTalk.setText(cuslist4.get(10));
+                txtTalk.setText(blacklist.get(10));
                 blackString();
                 bcus10();
                 break;

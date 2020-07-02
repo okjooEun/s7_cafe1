@@ -129,7 +129,7 @@ public class StartActivity extends AppCompatActivity {
                 finish();
             }
         });
-        if (count <= 1) {
+        if (count <= 0) {
             Resources res1 = getResources();
             Drawable drawable = res1.getDrawable(R.drawable.continue_btn_off);
             continuebtn.setBackground(drawable);

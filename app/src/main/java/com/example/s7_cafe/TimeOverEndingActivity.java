@@ -19,7 +19,7 @@ public class TimeOverEndingActivity extends AppCompatActivity {
     ImageView setting;
     private View    decorView;
     private int   uiOption, count;
-    ArrayList<String> cuslist, cuslist2, cuslist3,cuslist4;
+    ArrayList<String> cus1, cus2, cus3, cus4, cus6,cus8,cus10, black;
     String name;
 
     SharedPreferenceUtill sharedPreference = new SharedPreferenceUtill();
@@ -59,183 +59,375 @@ public class TimeOverEndingActivity extends AppCompatActivity {
             }
         });
 
-        cuslist = sharedPreference.getStringArrayPref(this, "list");
-        cuslist2 = sharedPreference.getStringArrayPref(this,"list2");
-        cuslist3 = sharedPreference.getStringArrayPref(this,"list3");
-        cuslist4 = sharedPreference.getStringArrayPref(this,"list4");
+        cus1 = sharedPreference.getStringArrayPref(this, "list");
+        cus2 = sharedPreference.getStringArrayPref(this,"list2");
+        cus3 = sharedPreference.getStringArrayPref(this,"list3");
+        cus4 = sharedPreference.getStringArrayPref(this,"list4");
+        cus6 = sharedPreference.getStringArrayPref(this,"list6");
+        cus8 = sharedPreference.getStringArrayPref(this,"list8");
+        cus10 = sharedPreference.getStringArrayPref(this,"list10");
+        black = sharedPreference.getStringArrayPref(this,"black");
+
 
         SharedPreferenceUtill.setBoolean(TimeOverEndingActivity.this, "savename", true);
         SharedPreferenceUtill.setBoolean(this,"next", true);
         name = sharedPreference.getString(TimeOverEndingActivity.this, "name");
         switch (name) {
+            case "00":
+                cus1.set(0, "빈칸");
+                break;
+            case "01":
+                cus1.set(1, "빈칸");
+                break;
+            case "02":
+                cus1.set(2, "빈칸");
+                break;
+            case "03":
+                cus1.set(3, "빈칸");
+                break;
+            case "04":
+                cus1.set(4, "빈칸");
+                break;
+            case "05":
+                cus1.set(5, "빈칸");
+                break;
+            case "06":
+                cus1.set(6, "빈칸");
+                break;
+            case "07":
+                cus1.set(7, "빈칸");
+                break;
+            case "08":
+                cus1.set(8, "빈칸");
+                break;
+            case "09":
+                cus1.set(9, "빈칸");
             case "0":
-                cuslist.set(0, "빈칸");
+                cus1.set(10, "빈칸");
                 break;
             case "1":
-                cuslist.set(1, "빈칸");
+                cus1.set(11, "빈칸");
                 break;
             case "2":
-                cuslist.set(2, "빈칸");
-                break;
-            case "3":
-                cuslist.set(3, "빈칸");
+                cus1.set(12, "빈칸");
                 break;
             case "4":
-                cuslist.set(4, "빈칸");
-                break;
-            case "5":
-                cuslist.set(5, "빈칸");
-                break;
-            case "6":
-                cuslist.set(6, "빈칸");
-                break;
-            case "7":
-                cuslist.set(7, "빈칸");
-                break;
-            case "8":
-                cuslist.set(8, "빈칸");
-                break;
-            case "9":
-                cuslist.set(9, "빈칸");
-                break;
-            case "10":
-                cuslist.set(10, "빈칸");
-                break;
-            case "11":
-                cuslist.set(11, "빈칸");
-                break;
-            case "12":
-                cuslist.set(12, "빈칸");
+                cus1.set(13, "빈칸");
                 break;
             case "13":
-                cuslist.set(13, "빈칸");
+                cus1.set(14, "빈칸");
                 break;
             case "14":
-                cuslist.set(14, "빈칸");
+                cus1.set(15, "빈칸");
+                break;
+            case "3":
+                cus2.set(0,"빈칸");
+                break;
+            case "5":
+                cus2.set(1,"빈칸");
+                break;
+            case "6":
+                cus2.set(2,"빈칸");
+                break;
+            case "7":
+                cus2.set(3,"빈칸");
+                break;
+            case "8":
+                cus2.set(4,"빈칸");
+                break;
+            case "9":
+                cus2.set(5,"빈칸");
+                break;
+            case "10":
+                cus2.set(6,"빈칸");
+                break;
+            case "11":
+                cus2.set(7,"빈칸");
+                break;
+            case "12":
+                cus2.set(8,"빈칸");
+                break;
+            case "010":
+                cus2.set(9,"빈칸");
+                break;
+            case "011":
+                cus2.set(10,"빈칸");
+                break;
+            case "012":
+                cus2.set(11,"빈칸");
+                break;
+            case "013":
+                cus2.set(12,"빈칸");
+                break;
+            case "014":
+                cus2.set(13,"빈칸");
                 break;
             case "15":
-                cuslist2.set(0, "빈칸");
+                cus3.set(0,"빈칸");
                 break;
             case "16":
-                cuslist2.set(1, "빈칸");
+                cus3.set(1,"빈칸");
                 break;
             case "17":
-                cuslist2.set(2, "빈칸");
+                cus3.set(2,"빈칸");
                 break;
             case "18":
-                cuslist2.set(3, "빈칸");
+                cus3.set(3,"빈칸");
                 break;
             case "19":
-                cuslist2.set(4, "빈칸");
+                cus3.set(4,"빈칸");
+                break;
+            case "015":
+                cus3.set(5,"빈칸");
+                break;
+            case "016":
+                cus3.set(6,"빈칸");
+                break;
+            case "017":
+                cus3.set(7,"빈칸");
+                break;
+            case "018":
+                cus3.set(8,"빈칸");
+                break;
+            case "019":
+                cus4.set(0,"빈칸");
+                break;
+            case "020":
+                cus4.set(1,"빈칸");
+                break;
+            case "021":
+                cus4.set(2,"빈칸");
+                break;
+            case "022":
+                cus4.set(3,"빈칸");
+                break;
+            case "0222":
+                cus4.set(4,"빈칸");
+                break;
+            case "023":
+                cus4.set(5,"빈칸");
+                break;
+            case "024":
+                cus4.set(6,"빈칸");
+                break;
+            case "025":
+                cus4.set(7,"빈칸");
+                break;
+            case "026":
+                cus4.set(8,"빈칸");
+                break;
+            case "027":
+                cus4.set(9,"빈칸");
+                break;
+            case "028":
+                cus4.set(10,"빈칸");
+                break;
+            case "029":
+                cus4.set(11,"빈칸");
+                break;
+            case "030":
+                cus4.set(12,"빈칸");
+                break;
+            case "031":
+                cus6.set(0,"빈칸");
+                break;
+            case "032":
+                cus6.set(1,"빈칸");
+                break;
+            case "033":
+                cus6.set(2,"빈칸");
+                break;
+            case "034":
+                cus6.set(3,"빈칸");
+                break;
+            case "035":
+                cus6.set(4,"빈칸");
+                break;
+            case "036":
+                cus6.set(5,"빈칸");
+                break;
+            case "037":
+                cus6.set(6,"빈칸");
+                break;
+            case "038":
+                cus6.set(7,"빈칸");
+                break;
+            case "039":
+                cus8.set(0,"빈칸");
+                break;
+            case "040":
+                cus8.set(1,"빈칸");
+                break;
+            case "041":
+                cus8.set(2,"빈칸");
+                break;
+            case "042":
+                cus8.set(3,"빈칸");
+                break;
+            case "043":
+                cus8.set(4,"빈칸");
+                break;
+            case "044":
+                cus8.set(5,"빈칸");
+                break;
+            case "045":
+                cus8.set(6,"빈칸");
+                break;
+            case "046":
+                cus8.set(7,"빈칸");
+                break;
+            case "047":
+                cus8.set(8,"빈칸");
+                break;
+            case "048":
+                cus8.set(9,"빈칸");
+                break;
+            case "049":
+                cus8.set(10,"빈칸");
+                break;
+            case "050":
+                cus8.set(11,"빈칸");
                 break;
             case "20":
-                cuslist3.set(0, "빈칸");
+                cus10.set(0,"빈칸");
                 break;
             case "21":
-                cuslist3.set(1, "빈칸");
+                cus10.set(1,"빈칸");
                 break;
             case "22":
-                cuslist3.set(2, "빈칸");
+                cus10.set(2,"빈칸");
                 break;
             case "23":
-                cuslist3.set(3, "빈칸");
+                cus10.set(3,"빈칸");
                 break;
             case "24":
-                cuslist3.set(4, "빈칸");
+                cus10.set(4,"빈칸");
                 break;
             case "25":
-                cuslist3.set(5, "빈칸");
+                cus10.set(5,"빈칸");
                 break;
             case "26":
-                cuslist3.set(6, "빈칸");
+                cus10.set(6,"빈칸");
                 break;
             case "27":
-                cuslist3.set(7, "빈칸");
+                cus10.set(7,"빈칸");
                 break;
             case "28":
-                cuslist3.set(8, "빈칸");
+                cus10.set(8,"빈칸");
                 break;
             case "29":
-                cuslist3.set(9, "빈칸");
+                cus10.set(9,"빈칸");
+                break;
+            case "051":
+                cus10.set(10,"빈칸");
+                break;
+            case "052":
+                cus10.set(11,"빈칸");
+                break;
+            case "053":
+                cus10.set(12,"빈칸");
+                break;
+            case "054":
+                cus10.set(13,"빈칸");
+                break;
+            case "055":
+                cus10.set(14,"빈칸");
+                break;
+            case "056":
+                cus10.set(15,"빈칸");
+                break;
+            case "057":
+                cus10.set(16,"빈칸");
+                break;
+            case "058":
+                cus10.set(17,"빈칸");
                 break;
             case "b0":
-                cuslist4.set(0, "빈칸");
+                black.set(0,"빈칸");
                 break;
             case "b1":
-                cuslist4.set(1, "빈칸");
+                black.set(1,"빈칸");
                 break;
             case "b2":
-                cuslist4.set(2, "빈칸");
+                black.set(2,"빈칸");
                 break;
             case "b3":
-                cuslist4.set(3, "빈칸");
+                black.set(3,"빈칸");
                 break;
             case "b4":
-                cuslist4.set(4, "빈칸");
+                black.set(4,"빈칸");
                 break;
             case "b5":
-                cuslist4.set(5, "빈칸");
+                black.set(5,"빈칸");
                 break;
             case "b6":
-                cuslist4.set(6, "빈칸");
+                black.set(6,"빈칸");
                 break;
             case "b7":
-                cuslist4.set(7, "빈칸");
+                black.set(7,"빈칸");
                 break;
             case "b8":
-                cuslist4.set(8, "빈칸");
+                black.set(8,"빈칸");
                 break;
             case "b9":
-                cuslist4.set(9, "빈칸");
+                black.set(9,"빈칸");
                 break;
             case "b10":
-                cuslist4.set(10, "빈칸");
+                black.set(10,"빈칸");
+                break;
+            case "b11":
+                black.set(11,"빈칸");
                 break;
 
+
         }
-        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list",cuslist);
-        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list2",cuslist2);
-        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list3",cuslist3);
-        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list4",cuslist4);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list",cus1);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list2",cus2);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list3",cus3);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list4",cus4);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this,"list6",cus6);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this,"list8",cus8);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this, "list10", cus10);
+        sharedPreference.setStringArrayPref(TimeOverEndingActivity.this,"black",black);
 
 
 
         lin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(count == 6) {
+                if(count == 5) {
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==12){
+                } else if (count ==11){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==24){
+                } else if (count ==23){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==33){
+                } else if (count ==32){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==43){
+                } else if (count ==42){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==53){
+                } else if (count ==52){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==66){
+                } else if (count ==65){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==80){
+                } else if (count ==79){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count ==95){
+                } else if (count ==94){
                     Intent intent = new Intent(TimeOverEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();

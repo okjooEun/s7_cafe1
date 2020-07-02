@@ -41,15 +41,19 @@ public class RecipebookActivity extends AppCompatActivity {
         cuscount = sharedPreference.getInt(this, "count");
 
         next = (LinearLayout) findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (RecipebookActivity.this, RecipebookActivity2.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        next.setVisibility(decorView.INVISIBLE);
+        if (cuscount > 5) {
+            next.setVisibility(decorView.VISIBLE);
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(RecipebookActivity.this, RecipebookActivity2.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
 
 
+        }
     }
 }

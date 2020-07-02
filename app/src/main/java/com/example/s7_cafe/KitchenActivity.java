@@ -476,6 +476,462 @@ public class KitchenActivity extends AppCompatActivity {
                     }
                 });
                 break;
+            case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32:
+                datetext.setText("26");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.banana_off);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+                datetext.setText("27");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.banana_off);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+                datetext.setText("28");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.banana_off);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 53: case 54: case 55: case 56: case 57: case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65:
+                datetext.setText("29");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.banana_off);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 66: case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78: case 79:
+                datetext.setText("30");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.icon5);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.banana_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon5");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon5");
+                        }
+
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
+            case 80: case 81: case 82: case 83: case 84: case 85: case 86: case 87: case 88: case 89: case 90: case 91: case 92: case 93: case 94:
+                datetext.setText("31");
+                baseicon();
+                icon3.setImageResource(R.drawable.icon3);
+                icon4.setImageResource(R.drawable.icon4);
+                icon5.setImageResource(R.drawable.icon5);
+                icon6.setImageResource(R.drawable.mash_off);
+                icon7.setImageResource(R.drawable.toff_off);
+                icon8.setImageResource(R.drawable.mouse_off);
+                icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.choco_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon3");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon3");
+                        }
+
+                    }
+                });
+                icon4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.straw_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon4");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon4");
+                        }
+
+                    }
+                });
+                icon5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Resources res = getResources();
+                        final Drawable drawable = res.getDrawable(R.drawable.banana_on);
+
+                        if (checkimg == true) {
+                            selectIng.setImageDrawable(drawable);
+                            checkimg = false;
+                            selectIng.setTag("icon5");
+                        } else if (checkimg == false) {
+                            selectIng2.setVisibility(View.VISIBLE);
+                            selectIng2.setImageDrawable(drawable);
+                            checkimg = true;
+                            selectIng2.setTag("icon5");
+                        }
+
+                    }
+                });
+                icon6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                icon8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toast();
+                    }
+                });
+                break;
             case 95: case 96: case 97: case 98: case 99: case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 109: case 110:
                 Resources res = getResources();
                 final Drawable drawable = res.getDrawable(R.drawable.jcalendar);

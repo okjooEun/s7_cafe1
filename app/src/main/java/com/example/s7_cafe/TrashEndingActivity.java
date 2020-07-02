@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -24,7 +25,8 @@ public class TrashEndingActivity extends AppCompatActivity {
     ImageView imageView;
     private View decorView;
     private int uiOption, count;
-
+    String name;
+    ArrayList<String> black;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,44 +71,50 @@ public class TrashEndingActivity extends AppCompatActivity {
             Glide.with(this).load(R.drawable.trashending3).into(imageView);
         }
 
+        black = sharedPreference.getStringArrayPref(this,"black");
 
+        SharedPreferenceUtill.setBoolean(TrashEndingActivity.this, "savename", true);
+
+        name = sharedPreference.getString(TrashEndingActivity.this, "name");
+        black.set(8,"빈칸");
+        sharedPreference.setStringArrayPref(TrashEndingActivity.this,"black",black);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                if (count == 6) {
+                if (count == 5) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 12) {
+                } else if (count == 11) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 24) {
+                } else if (count == 23) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 33) {
+                } else if (count == 32) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 43) {
+                } else if (count == 42) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 53) {
+                } else if (count == 52) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 66) {
+                } else if (count == 65) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 80) {
+                } else if (count == 79) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (count == 95) {
+                } else if (count == 94) {
                     Intent intent = new Intent(TrashEndingActivity.this, DayActivity.class);
                     startActivity(intent);
                     finish();
